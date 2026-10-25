@@ -1,0 +1,342 @@
+'use client';
+
+import React, { useState } from 'react';
+import { 
+  X, 
+  Send, 
+  CheckCircle2, 
+  Ship, 
+  Clock, 
+  FileText,
+  Anchor
+} from 'lucide-react';
+import { COMPANY_INFO } from '@/data/company';
+
+interface RFQModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  defaultProduct?: string;
+}
+
+export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalProps) {
+  const [submitted, setSubmitted] = useState(false);
+  const [rfqNumber, setRfqNumber] = useState('');
+  const [formData, setFormData] = useState({
+    vesselName: '',
+    imoNumber: '',
+    portOfDelivery: 'Singapore OPL',
+    etaDate: '',
+    partDescription: defaultProduct || '',
+    quantity: '1',
+    urgency: 'urgent',
+    contactName: '',
+    email: '',
+    phone: '',
+    company: ''
+  });
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const generatedId = 'NVX-RFQ-' + Math.floor(100000 + Math.random() * 900000);
+    setRfqNumber(generatedId);
+    setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    onClose();
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div 
+        className="modal-content" 
+        onClick={(e) => e.stopPropagation()}
+        style={{ maxWidth: '680px', backgroundColor: '#ffffff', borderRadius: '10px', overflow: 'hidden' }}
+      >
+        {/* Modal Top Bar (Maritime Navy) */}
+        <div style={{
+          padding: '20px 24px',
+          borderBottom: '3px solid #0284c7',
+          backgroundColor: '#0a2540',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '6px',
+              backgroundColor: '#0284c7',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <Anchor size={20} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+                Request For Quotation (RFQ)
+              </h3>
+              <div style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>
+                Guaranteed quote reply within 60 minutes for worldwide ports
+              </div>
+            </div>
+          </div>
+
+          <button 
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer'
+            }}
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <div style={{ padding: '24px', backgroundColor: '#ffffff' }}>
+          {submitted ? (
+            <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                backgroundColor: '#dcfce7',
+                color: '#15803d',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 16px',
+                border: '1px solid #86efac'
+              }}>
+                <CheckCircle2 size={36} />
+              </div>
+
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0a2540', marginBottom: '8px' }}>
+                RFQ Successfully Transmitted!
+              </h3>
+
+              <div style={{
+                backgroundColor: '#f1f5f9',
+                border: '1px solid #cbd5e1',
+                borderRadius: '6px',
+                padding: '12px',
+                maxWidth: '340px',
+                margin: '16px auto',
+                fontFamily: 'monospace',
+                fontSize: '1rem',
+                color: '#0284c7',
+                fontWeight: 700
+              }}>
+                Reference: {rfqNumber}
+              </div>
+
+              <p style={{ color: '#64748b', fontSize: '0.92rem', maxWidth: '440px', margin: '0 auto 24px', lineHeight: 1.6 }}>
+                Our marine duty superintendents in Rotterdam and Singapore have received your inquiry. A formal proforma quote with lead time and freight options will be sent to <strong>{formData.email}</strong> shortly.
+              </p>
+
+              <button 
+                onClick={handleReset}
+                className="btn btn-primary"
+                style={{ padding: '12px 30px', backgroundColor: '#0a2540' }}
+              >
+                Close & Return
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              
+              {/* Urgency Radio Selector */}
+              <div style={{
+                backgroundColor: '#f8fafc',
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px'
+              }}>
+                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase' }}>
+                  Urgency Priority:
+                </div>
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#334155', cursor: 'pointer' }}>
+                    <input 
+                      type="radio" 
+                      name="urgency" 
+                      value="routine"
+                      checked={formData.urgency === 'routine'}
+                      onChange={() => setFormData({ ...formData, urgency: 'routine' })}
+                    />
+                    Routine (Standard)
+                  </label>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#0284c7', fontWeight: 700, cursor: 'pointer' }}>
+                    <input 
+                      type="radio" 
+                      name="urgency" 
+                      value="urgent"
+                      checked={formData.urgency === 'urgent'}
+                      onChange={() => setFormData({ ...formData, urgency: 'urgent' })}
+                    />
+                    Urgent (Port Call)
+                  </label>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#dc2626', fontWeight: 700, cursor: 'pointer' }}>
+                    <input 
+                      type="radio" 
+                      name="urgency" 
+                      value="aog"
+                      checked={formData.urgency === 'aog'}
+                      onChange={() => setFormData({ ...formData, urgency: 'aog' })}
+                    />
+                    AOG / Vessel Critical
+                  </label>
+                </div>
+              </div>
+
+              {/* Grid 1: Vessel & Port Details */}
+              <div className="form-row-2" style={{ marginBottom: '16px' }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Vessel Name *</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="e.g., M/V Pacific Pioneer"
+                    className="form-input"
+                    value={formData.vesselName}
+                    onChange={(e) => setFormData({ ...formData, vesselName: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>IMO Number</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g., 9482154"
+                    className="form-input"
+                    value={formData.imoNumber}
+                    onChange={(e) => setFormData({ ...formData, imoNumber: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div className="form-row-2" style={{ marginBottom: '16px' }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Port of Delivery *</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="e.g., Singapore OPL, Rotterdam, Fujairah"
+                    className="form-input"
+                    value={formData.portOfDelivery}
+                    onChange={(e) => setFormData({ ...formData, portOfDelivery: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Vessel ETA / Target Date</label>
+                  <input 
+                    type="date" 
+                    className="form-input"
+                    value={formData.etaDate}
+                    onChange={(e) => setFormData({ ...formData, etaDate: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Spares / Machinery Description */}
+              <div className="form-group" style={{ marginBottom: '16px' }}>
+                <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Required Products / Part Numbers / Engine Specs *</label>
+                <textarea 
+                  rows={3}
+                  required
+                  placeholder="Provide part numbers, maker, engine type (e.g., Cummins QSK19 Turbocharger HX83 Assy: 4041703, or Yanmar 6EY18AL Spares)..."
+                  className="form-textarea"
+                  value={formData.partDescription}
+                  onChange={(e) => setFormData({ ...formData, partDescription: e.target.value })}
+                ></textarea>
+              </div>
+
+              {/* Grid 2: Contact Information */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '14px', marginBottom: '20px' }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Contact Name *</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="Chief Eng. / Superintendent"
+                    className="form-input"
+                    value={formData.contactName}
+                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Work Email *</label>
+                  <input 
+                    type="email" 
+                    required 
+                    placeholder="tech@shippingcompany.com"
+                    className="form-input"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>WhatsApp / Phone *</label>
+                  <input 
+                    type="tel" 
+                    required 
+                    placeholder="+1 / +65 / +91..."
+                    className="form-input"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Submit Buttons */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <button 
+                  type="button" 
+                  onClick={onClose}
+                  className="btn"
+                  style={{ padding: '11px 22px', border: '1px solid #cbd5e1', backgroundColor: '#ffffff', color: '#475569', fontWeight: 600 }}
+                >
+                  Cancel
+                </button>
+
+                <button 
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ padding: '11px 28px', backgroundColor: '#0284c7', borderColor: '#0284c7', flex: '1 1 auto', justifyContent: 'center' }}
+                >
+                  <Send size={16} />
+                  <span>Transmit RFQ to Technical Desk</span>
+                </button>
+              </div>
+
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

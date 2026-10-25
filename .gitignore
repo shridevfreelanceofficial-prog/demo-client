@@ -1,0 +1,49 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js build outputs
+/.next/
+/out/
+/build
+
+# Testing, MCP, and browser artifacts
+/.playwright-mcp
+/product-detail-desktop.png
+/product-detail-full.png
+/product-detail-mobile.png
+/product-detail-ship4.png
+/product-modal-lightbox.png
+/products-cards-transparent.png
+/products-hero-ship4.png
+
+# Internal image backups
+/public/images_backup/
+
+# Environment files
+.env
+.env*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
