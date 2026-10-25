@@ -505,6 +505,17 @@ p {
   position: relative;
 }
 
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+  .modal-content {
+    max-height: 94vh;
+    border-radius: 12px;
+  }
+}
+
 /* Floating Emergency Action */
 .floating-hotline,
 .floating-desk-container {

@@ -275,7 +275,7 @@ export default function HomePage() {
               </p>
 
               {/* Key Features Bullet Points */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '30px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '14px', marginBottom: '30px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: '#0a2540', fontWeight: 700 }}>
                   <CheckCircle2 size={18} color="#0284c7" />
                   <span>85,000+ Parts in Stock</span>
@@ -294,7 +294,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '14px' }}>
+              <div className="btn-group-responsive">
                 <Link href="/about" className="btn btn-primary">
                   <span>Read Full Profile</span>
                   <ArrowRight size={16} />

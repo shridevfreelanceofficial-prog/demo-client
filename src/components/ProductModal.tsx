@@ -23,27 +23,47 @@ export default function ProductModal({ product, onClose, onRequestQuote }: Produ
   if (!product) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div 
+      className="modal-overlay" 
+      onClick={onClose}
+      style={{
+        padding: '12px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10000
+      }}
+    >
       <div 
         className="modal-content" 
         onClick={(e) => e.stopPropagation()}
-        style={{ padding: '0', overflow: 'hidden' }}
+        style={{ 
+          maxWidth: '760px', 
+          width: '100%',
+          maxHeight: '94vh',
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: '#ffffff',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          padding: '0' 
+        }}
       >
-        {/* Modal Top Header */}
+        {/* Modal Top Header - Fixed at top */}
         <div style={{
-          padding: '16px 24px',
+          padding: '16px 20px',
           borderBottom: '1px solid #e2e8f0',
           backgroundColor: '#0a2540',
           color: '#ffffff',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexShrink: 0
         }}>
           <div>
             <span style={{ fontSize: '0.72rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase' }}>
               {product.category}
             </span>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#ffffff', margin: 0 }}>
               {product.name}
             </h3>
           </div>
@@ -60,7 +80,8 @@ export default function ProductModal({ product, onClose, onRequestQuote }: Produ
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              flexShrink: 0
             }}
           >
             <X size={18} />
@@ -68,7 +89,16 @@ export default function ProductModal({ product, onClose, onRequestQuote }: Produ
         </div>
 
         {/* Modal Scrollable Content */}
-        <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ 
+          padding: '20px', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '20px',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          flexGrow: 1,
+          overscrollBehavior: 'contain'
+        }}>
           
           {/* Main Visual & Key Data Row */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', alignItems: 'center' }}>

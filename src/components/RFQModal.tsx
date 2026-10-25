@@ -50,39 +50,61 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div 
+      className="modal-overlay" 
+      onClick={onClose}
+      style={{
+        padding: '12px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10000
+      }}
+    >
       <div 
         className="modal-content" 
         onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: '680px', backgroundColor: '#ffffff', borderRadius: '10px', overflow: 'hidden' }}
+        style={{ 
+          maxWidth: '680px', 
+          width: '100%',
+          maxHeight: '94vh',
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: '#ffffff', 
+          borderRadius: '12px', 
+          overflow: 'hidden',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.4)',
+          position: 'relative'
+        }}
       >
-        {/* Modal Top Bar (Maritime Navy) */}
+        {/* Modal Top Bar (Maritime Navy) - Fixed at top */}
         <div style={{
-          padding: '20px 24px',
+          padding: '16px 20px',
           borderBottom: '3px solid #0284c7',
           backgroundColor: '#0a2540',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexShrink: 0
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{
-              width: '38px',
-              height: '38px',
+              width: '36px',
+              height: '36px',
               borderRadius: '6px',
               backgroundColor: '#0284c7',
               color: '#ffffff',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              flexShrink: 0
             }}>
               <Anchor size={20} />
             </div>
             <div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff', margin: 0, lineHeight: 1.25 }}>
                 Request For Quotation (RFQ)
               </h3>
-              <div style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>
+              <div style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>
                 Guaranteed quote reply within 60 minutes for worldwide ports
               </div>
             </div>
@@ -100,15 +122,23 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              flexShrink: 0
             }}
           >
             <X size={18} />
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div style={{ padding: '24px', backgroundColor: '#ffffff' }}>
+        {/* Modal Body - Scrollable on mobile & desktop */}
+        <div style={{ 
+          padding: '20px', 
+          backgroundColor: '#ffffff',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          flexGrow: 1,
+          overscrollBehavior: 'contain'
+        }}>
           {submitted ? (
             <div style={{ textAlign: 'center', padding: '30px 10px' }}>
               <div style={{
@@ -126,7 +156,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                 <CheckCircle2 size={36} />
               </div>
 
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0a2540', marginBottom: '8px' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0a2540', marginBottom: '8px' }}>
                 RFQ Successfully Transmitted!
               </h3>
 
@@ -152,7 +182,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
               <button 
                 onClick={handleReset}
                 className="btn btn-primary"
-                style={{ padding: '12px 30px', backgroundColor: '#0a2540' }}
+                style={{ padding: '12px 30px', backgroundColor: '#0a2540', width: '100%', maxWidth: '280px' }}
               >
                 Close & Return
               </button>
@@ -160,24 +190,36 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
           ) : (
             <form onSubmit={handleSubmit}>
               
-              {/* Urgency Radio Selector */}
+              {/* Urgency Radio Selector - Responsive Chip Cards */}
               <div style={{
                 backgroundColor: '#f8fafc',
                 border: '1px solid #e2e8f0',
                 borderRadius: '8px',
-                padding: '12px 16px',
-                marginBottom: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
-                gap: '12px'
+                padding: '12px 14px',
+                marginBottom: '18px'
               }}>
-                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase' }}>
-                  Urgency Priority:
+                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase', marginBottom: '10px' }}>
+                  Urgency Priority
                 </div>
-                <div style={{ display: 'flex', gap: '16px' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#334155', cursor: 'pointer' }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                  gap: '8px'
+                }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    border: formData.urgency === 'routine' ? '2px solid #0284c7' : '1px solid #cbd5e1',
+                    backgroundColor: formData.urgency === 'routine' ? '#f0f9ff' : '#ffffff',
+                    cursor: 'pointer',
+                    fontSize: '0.84rem',
+                    color: formData.urgency === 'routine' ? '#0369a1' : '#334155',
+                    fontWeight: formData.urgency === 'routine' ? 700 : 500,
+                    transition: 'all 0.15s ease'
+                  }}>
                     <input 
                       type="radio" 
                       name="urgency" 
@@ -185,9 +227,23 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                       checked={formData.urgency === 'routine'}
                       onChange={() => setFormData({ ...formData, urgency: 'routine' })}
                     />
-                    Routine (Standard)
+                    <span>Routine</span>
                   </label>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#0284c7', fontWeight: 700, cursor: 'pointer' }}>
+
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    border: formData.urgency === 'urgent' ? '2px solid #0284c7' : '1px solid #cbd5e1',
+                    backgroundColor: formData.urgency === 'urgent' ? '#f0f9ff' : '#ffffff',
+                    cursor: 'pointer',
+                    fontSize: '0.84rem',
+                    color: formData.urgency === 'urgent' ? '#0284c7' : '#334155',
+                    fontWeight: formData.urgency === 'urgent' ? 700 : 500,
+                    transition: 'all 0.15s ease'
+                  }}>
                     <input 
                       type="radio" 
                       name="urgency" 
@@ -195,9 +251,23 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                       checked={formData.urgency === 'urgent'}
                       onChange={() => setFormData({ ...formData, urgency: 'urgent' })}
                     />
-                    Urgent (Port Call)
+                    <span>Urgent (Port)</span>
                   </label>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#dc2626', fontWeight: 700, cursor: 'pointer' }}>
+
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    border: formData.urgency === 'aog' ? '2px solid #dc2626' : '1px solid #cbd5e1',
+                    backgroundColor: formData.urgency === 'aog' ? '#fef2f2' : '#ffffff',
+                    cursor: 'pointer',
+                    fontSize: '0.84rem',
+                    color: formData.urgency === 'aog' ? '#dc2626' : '#334155',
+                    fontWeight: formData.urgency === 'aog' ? 700 : 500,
+                    transition: 'all 0.15s ease'
+                  }}>
                     <input 
                       type="radio" 
                       name="urgency" 
@@ -205,13 +275,13 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                       checked={formData.urgency === 'aog'}
                       onChange={() => setFormData({ ...formData, urgency: 'aog' })}
                     />
-                    AOG / Vessel Critical
+                    <span>AOG Critical</span>
                   </label>
                 </div>
               </div>
 
               {/* Grid 1: Vessel & Port Details */}
-              <div className="form-row-2" style={{ marginBottom: '16px' }}>
+              <div className="form-row-2" style={{ marginBottom: '14px' }}>
                 <div className="form-group" style={{ marginBottom: 0 }}>
                   <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Vessel Name *</label>
                   <input 
@@ -236,7 +306,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                 </div>
               </div>
 
-              <div className="form-row-2" style={{ marginBottom: '16px' }}>
+              <div className="form-row-2" style={{ marginBottom: '14px' }}>
                 <div className="form-group" style={{ marginBottom: 0 }}>
                   <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Port of Delivery *</label>
                   <input 
@@ -261,7 +331,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
               </div>
 
               {/* Spares / Machinery Description */}
-              <div className="form-group" style={{ marginBottom: '16px' }}>
+              <div className="form-group" style={{ marginBottom: '14px' }}>
                 <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Required Products / Part Numbers / Engine Specs *</label>
                 <textarea 
                   rows={3}
@@ -274,7 +344,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
               </div>
 
               {/* Grid 2: Contact Information */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '14px', marginBottom: '20px' }}>
+              <div className="form-row-2" style={{ marginBottom: '14px' }}>
                 <div className="form-group" style={{ marginBottom: 0 }}>
                   <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>Contact Name *</label>
                   <input 
@@ -298,38 +368,47 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
-
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>WhatsApp / Phone *</label>
-                  <input 
-                    type="tel" 
-                    required 
-                    placeholder="+1 / +65 / +91..."
-                    className="form-input"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
               </div>
 
-              {/* Submit Buttons */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <div className="form-group" style={{ marginBottom: '20px' }}>
+                <label className="form-label" style={{ fontWeight: 600, color: '#1e293b' }}>WhatsApp / Phone *</label>
+                <input 
+                  type="tel" 
+                  required 
+                  placeholder="+1 / +65 / +91..."
+                  className="form-input"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                />
+              </div>
+
+              {/* Submit Buttons - Responsive Stacking */}
+              <div className="btn-group-responsive" style={{ paddingTop: '14px', borderTop: '1px solid #e2e8f0', width: '100%' }}>
+                <button 
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ 
+                    padding: '12px 18px', 
+                    backgroundColor: '#0284c7', 
+                    borderColor: '#0284c7', 
+                    width: '100%', 
+                    justifyContent: 'center',
+                    whiteSpace: 'normal',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.3
+                  }}
+                >
+                  <Send size={16} />
+                  <span>Submit RFQ to Duty Desk</span>
+                </button>
+
                 <button 
                   type="button" 
                   onClick={onClose}
                   className="btn"
-                  style={{ padding: '11px 22px', border: '1px solid #cbd5e1', backgroundColor: '#ffffff', color: '#475569', fontWeight: 600 }}
+                  style={{ padding: '12px 22px', border: '1px solid #cbd5e1', backgroundColor: '#ffffff', color: '#475569', fontWeight: 600, width: '100%' }}
                 >
                   Cancel
-                </button>
-
-                <button 
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{ padding: '11px 28px', backgroundColor: '#0284c7', borderColor: '#0284c7', flex: '1 1 auto', justifyContent: 'center' }}
-                >
-                  <Send size={16} />
-                  <span>Transmit RFQ to Technical Desk</span>
                 </button>
               </div>
 
