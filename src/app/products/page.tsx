@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import ProductModal from '@/components/ProductModal';
@@ -89,32 +90,37 @@ function ProductsContent() {
 
   return (
     <>
-      {/* Header Banner - Features ship4.jpg Background with High-Contrast Overlay */}
-      <section style={{
-        position: 'relative',
-        color: '#ffffff',
-        padding: '65px 0 50px',
-        borderBottom: '4px solid #0284c7',
-        backgroundImage: 'linear-gradient(180deg, rgba(10, 37, 64, 0.82) 0%, rgba(10, 37, 64, 0.88) 100%), url("/images/ship4.jpg")',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        overflow: 'hidden'
-      }}>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: '800px' }}>
-            <span style={{ fontSize: '0.8rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Navyronix Products Catalog
-            </span>
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 800, color: '#ffffff', margin: '8px 0 14px' }}>
-              Marine Machinery & Spare Parts
-            </h1>
-            <p style={{ color: '#cbd5e1', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '24px' }}>
-              Explore genuine and OEM marine spare parts across our 12 certified shipboard equipment categories. Sourced according to WZS Marine and major engine manufacturer specifications.
-            </p>
+      {/* Breadcrumb Header */}
+      <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '14px 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b' }}>
+            <Link href="/" style={{ color: '#0284c7', fontWeight: 600 }}>Home</Link>
+            <span>/</span>
+            <span style={{ color: '#0a2540', fontWeight: 700 }}>Products Catalog</span>
+          </div>
+          <div style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+            85,000+ Marine & Industrial Parts In Stock
+          </div>
+        </div>
+      </div>
+
+      {/* Main Catalog View (Clean White Background) */}
+      <section className="section section-white" style={{ paddingTop: '28px' }}>
+        <div className="container">
+          
+          {/* Top Catalog Header & Sector Filter Bar */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '24px' }}>
+            <div>
+              <h1 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 800, color: '#0a2540', margin: '0 0 6px' }}>
+                Marine Machinery & Spare Parts Catalog
+              </h1>
+              <p style={{ color: '#64748b', fontSize: '0.92rem', margin: 0 }}>
+                Explore genuine and OEM marine spare parts across our 12 certified equipment categories.
+              </p>
+            </div>
 
             {/* Sector Tabs: Marine vs Industrial */}
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               <button
                 onClick={() => {
                   setSelectedSector('marine');
@@ -123,20 +129,20 @@ function ProductsContent() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  padding: '10px 22px',
+                  gap: '6px',
+                  padding: '8px 16px',
                   borderRadius: '6px',
                   fontWeight: 700,
-                  fontSize: '0.88rem',
+                  fontSize: '0.84rem',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
-                  backgroundColor: selectedSector === 'marine' ? '#0284c7' : 'rgba(255,255,255,0.12)',
-                  color: '#ffffff',
-                  border: 'none',
+                  backgroundColor: selectedSector === 'marine' ? '#0284c7' : '#f1f5f9',
+                  color: selectedSector === 'marine' ? '#ffffff' : '#334155',
+                  border: '1px solid ' + (selectedSector === 'marine' ? '#0284c7' : '#cbd5e1'),
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Ship size={16} />
+                <Ship size={15} />
                 <span>Marine Products (12 Categories)</span>
               </button>
 
@@ -148,20 +154,20 @@ function ProductsContent() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  padding: '10px 22px',
+                  gap: '6px',
+                  padding: '8px 16px',
                   borderRadius: '6px',
                   fontWeight: 700,
-                  fontSize: '0.88rem',
+                  fontSize: '0.84rem',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
-                  backgroundColor: selectedSector === 'industrial' ? '#0284c7' : 'rgba(255,255,255,0.12)',
-                  color: '#ffffff',
-                  border: 'none',
+                  backgroundColor: selectedSector === 'industrial' ? '#0284c7' : '#f1f5f9',
+                  color: selectedSector === 'industrial' ? '#ffffff' : '#334155',
+                  border: '1px solid ' + (selectedSector === 'industrial' ? '#0284c7' : '#cbd5e1'),
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Factory size={16} />
+                <Factory size={15} />
                 <span>Industrial Products</span>
               </button>
 
@@ -173,31 +179,24 @@ function ProductsContent() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  padding: '10px 18px',
+                  gap: '6px',
+                  padding: '8px 14px',
                   borderRadius: '6px',
                   fontWeight: 700,
-                  fontSize: '0.88rem',
+                  fontSize: '0.84rem',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
-                  backgroundColor: selectedSector === 'all' ? '#0284c7' : 'rgba(255,255,255,0.12)',
-                  color: '#ffffff',
-                  border: 'none',
+                  backgroundColor: selectedSector === 'all' ? '#0284c7' : '#f1f5f9',
+                  color: selectedSector === 'all' ? '#ffffff' : '#334155',
+                  border: '1px solid ' + (selectedSector === 'all' ? '#0284c7' : '#cbd5e1'),
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Layers size={16} />
+                <Layers size={15} />
                 <span>All Divisions</span>
               </button>
             </div>
-
           </div>
-        </div>
-      </section>
-
-      {/* Main Catalog View (Clean White Background) */}
-      <section className="section section-white">
-        <div className="container">
           
           {/* Controls Bar: Search & Category Filter */}
           <div style={{

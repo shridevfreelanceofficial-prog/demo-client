@@ -83,26 +83,25 @@ export default function Footer() {
         }}>
           {/* Column 1: Brand & Contact Info */}
           <div>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <Link href="/" style={{ display: 'inline-block', marginBottom: '20px' }}>
               <div style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '8px',
-                background: '#0284c7',
-                display: 'flex',
+                backgroundColor: '#ffffff',
+                padding: '10px 18px',
+                borderRadius: '10px',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                boxShadow: '0 6px 20px rgba(0,0,0,0.3)'
               }}>
-                <Anchor size={24} color="#ffffff" />
-              </div>
-              <div style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '1.5rem',
-                fontWeight: 800,
-                color: '#ffffff',
-                letterSpacing: '0.02em'
-              }}>
-                NAVY<span style={{ color: '#38bdf8' }}>RONIX</span>
+                <img 
+                  src="/images/crest-caliper-logo.jpg" 
+                  alt="Crest & Caliper Spares" 
+                  style={{
+                    height: '68px',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                />
               </div>
             </Link>
 
@@ -219,6 +218,15 @@ export default function Footer() {
                   Time-critical air freight, door-to-deck customs clearance
                 </div>
               </li>
+              <li>
+                <Link href="/own-fleet" style={{ color: '#ffffff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ArrowRight size={14} color="#38bdf8" />
+                  <span>Own Fleet Logistics</span>
+                </Link>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginLeft: '22px' }}>
+                  OPL delivery launches, workshop barges, dive support craft
+                </div>
+              </li>
             </ul>
           </div>
 
@@ -257,7 +265,7 @@ export default function Footer() {
               <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '12px' }}>
                 Receive monthly stock lists and urgent inventory updates.
               </div>
-              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for subscribing to Navyronix technical bulletin!'); }} style={{ display: 'flex', gap: '8px' }}>
+              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for subscribing to Crest & Caliper Spares technical bulletin!'); }} style={{ display: 'flex', gap: '8px' }}>
                 <input 
                   type="email" 
                   placeholder="chief@vessel.com"
@@ -306,7 +314,7 @@ export default function Footer() {
           color: '#94a3b8'
         }}>
           <div>
-            © {new Date().getFullYear()} Navyronix Marine & Industrial Services Ltd. All rights reserved.
+            © {new Date().getFullYear()} Crest & Caliper Spares Ltd. All rights reserved.
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
             <span>ISO 9001:2015</span>

@@ -27,114 +27,36 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* 1. Sticked Video GIF Background for About Us */}
-      <div className="fixed-about-bg" />
-      <div className="fixed-about-overlay" />
-
-      {/* 2. Page Header (Over Sticked Video GIF Background) */}
-      <section 
-        className="hero-header"
-        style={{
-          position: 'relative',
-          padding: '85px 0 65px',
-          color: '#ffffff',
-          backgroundColor: 'rgba(10, 37, 64, 0.72)',
-          backdropFilter: 'blur(3px)',
-          borderBottom: '3px solid #0284c7'
-        }}
-      >
-        <div className="container">
-          <div style={{ maxWidth: '850px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '4px', backgroundColor: 'rgba(2, 132, 199, 0.35)', color: '#38bdf8', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '16px', backdropFilter: 'blur(4px)' }}>
-              <Ship size={15} /> Company Profile & Maritime Heritage
-            </div>
-
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px', color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
-              Specialized Marine Machinery & Diesel Engine Spare Parts Supplier
-            </h1>
-
-            <p style={{ fontSize: '1.1rem', color: '#f8fafc', lineHeight: 1.6, marginBottom: '24px', textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>
-              Navyronix is a globally recognized supplier and service partner for shipowners, vessel technical managers, and marine engineering contractors across 450+ ports worldwide.
-            </p>
-
-            <div className="btn-group-responsive">
-              <button 
-                onClick={() => openRFQ()}
-                className="btn btn-primary"
-                style={{ padding: '12px 28px', backgroundColor: '#0284c7', borderColor: '#0284c7' }}
-              >
-                <FileSpreadsheet size={16} />
-                <span>Request Equipment Quotation</span>
-              </button>
-              <Link 
-                href="/products" 
-                className="btn" 
-                style={{ 
-                  padding: '12px 24px', 
-                  backgroundColor: 'rgba(10, 37, 64, 0.65)', 
-                  color: '#ffffff', 
-                  border: '1px solid rgba(255, 255, 255, 0.4)',
-                  backdropFilter: 'blur(4px)'
-                }}
-              >
-                <span>Browse Marine Spares</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+      {/* Breadcrumb Header */}
+      <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '14px 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b' }}>
+            <Link href="/" style={{ color: '#0284c7', fontWeight: 600 }}>Home</Link>
+            <span>/</span>
+            <span style={{ color: '#0a2540', fontWeight: 700 }}>About Us</span>
+          </div>
+          <div style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+            ISO 9001:2015 & Class-Certified Marine Technical Supply
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 2. Key Metrics Bar (Clean White / Light Slate) */}
-      <section style={{ backgroundColor: 'rgba(255, 255, 255, 0.96)', backdropFilter: 'blur(8px)', borderBottom: '1px solid #e2e8f0', padding: '30px 0' }}>
-        <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: '20px'
-          }}>
-            {COMPANY_INFO.stats.map((stat, idx) => (
-              <div 
-                key={idx}
-                style={{
-                  borderLeft: '4px solid #0284c7',
-                  paddingLeft: '14px'
-                }}
-              >
-                <div style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-                  fontWeight: 800,
-                  color: '#0a2540',
-                  lineHeight: 1
-                }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: '0.84rem', color: '#64748b', marginTop: '4px', fontWeight: 500 }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Main Company Story & Real Ship Image Showcase */}
-      <section style={{ padding: '60px 0', backgroundColor: '#f8fafc' }}>
+      {/* Main Company Story & Real Ship Image Showcase */}
+      <section style={{ padding: '60px 0', backgroundColor: '#ffffff' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px', alignItems: 'center' }}>
             
             {/* Left Story Text */}
             <div>
               <div style={{ display: 'inline-block', color: '#0284c7', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
-                About Navyronix
+                About Crest & Caliper Spares
               </div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 800, color: '#0a2540', marginBottom: '20px', lineHeight: 1.25 }}>
                 Supplying Premium Quality Marine Equipment Since 1999
               </h2>
 
               <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.7, marginBottom: '16px' }}>
-                Navyronix was founded with a single mission: to provide shipowners and vessel operators with dependable, fast, and transparent marine machinery parts supply. From heavy-duty 2-stroke and 4-stroke marine diesel engine components to turbochargers, air compressors, and pumps, we stock and source equipment from leading global makers.
+                Crest & Caliper Spares was founded with a single mission: to provide shipowners and vessel operators with dependable, fast, and transparent marine machinery parts supply. From heavy-duty 2-stroke and 4-stroke marine diesel engine components to turbochargers, air compressors, and pumps, we stock and source equipment from leading global makers.
               </p>
 
               <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.7, marginBottom: '24px' }}>
@@ -167,7 +89,7 @@ export default function AboutPage() {
               }}>
                 <img 
                   src="/images/ship3.webp" 
-                  alt="Navyronix Vessel Cargo & Deck Operations"
+                  alt="Crest & Caliper Spares Vessel Cargo & Deck Operations"
                   style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
                 />
               </div>
@@ -220,7 +142,7 @@ export default function AboutPage() {
               Our Competitive Edge
             </div>
             <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 800, color: '#0a2540' }}>
-              Why Fleet Operators Choose Navyronix
+              Why Fleet Operators Choose Crest & Caliper Spares
             </h2>
             <p style={{ color: '#64748b', fontSize: '1rem', marginTop: '8px' }}>
               Engineered reliability, rapid quotes, and dependable worldwide logistics for zero vessel downtime.

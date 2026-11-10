@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   Phone, 
   Mail, 
@@ -31,48 +32,29 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const id = 'NVX-' + Math.floor(100000 + Math.random() * 900000);
+    const id = 'CCS-' + Math.floor(100000 + Math.random() * 900000);
     setTicketId(id);
     setSubmitted(true);
   };
 
   return (
     <>
-      {/* 1. Sticked Ship4 Image Background for Contact Us */}
-      <div className="fixed-contact-bg" />
-      <div className="fixed-contact-overlay" />
-
-      {/* 2. Header Banner (Over Sticked Ship4 Background) */}
-      <section 
-        className="hero-header"
-        style={{
-          position: 'relative',
-          padding: '80px 0 60px',
-          color: '#ffffff',
-          backgroundColor: 'rgba(10, 37, 64, 0.72)',
-          backdropFilter: 'blur(3px)',
-          borderBottom: '3px solid #0284c7'
-        }}
-      >
-        <div className="container">
-          <div style={{ maxWidth: '850px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '4px', backgroundColor: 'rgba(2, 132, 199, 0.35)', color: '#38bdf8', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '16px', backdropFilter: 'blur(4px)' }}>
-              <Clock size={15} /> 24/7 Operations Desk
-            </div>
-
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px', color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
-              Contact Navyronix Marine Operations & RFQ Desk
-            </h1>
-
-            <p style={{ fontSize: '1.1rem', color: '#f8fafc', lineHeight: 1.6, textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>
-              Whether you require urgent spare parts delivery to an anchorage, riding squads for voyage engine repairs, or a competitive proforma quote — our marine superintendents are on duty 24/7/365.
-            </p>
+      {/* Breadcrumb Header */}
+      <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '14px 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b' }}>
+            <Link href="/" style={{ color: '#0284c7', fontWeight: 600 }}>Home</Link>
+            <span>/</span>
+            <span style={{ color: '#0a2540', fontWeight: 700 }}>Contact Us</span>
+          </div>
+          <div style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+            24/7 Operations Desk • 60-Minute Quote Reply
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 3. Main Content & Form Grid (Crisp White Cards over Maritime Ship Backdrop) */}
-      <section style={{ padding: '70px 0', backgroundColor: 'rgba(248, 250, 252, 0.88)', backdropFilter: 'blur(8px)' }}>
+      {/* Main Content & Form Grid */}
+      <section style={{ padding: '45px 0 70px', backgroundColor: '#f8fafc' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px' }}>
             
@@ -82,7 +64,7 @@ export default function ContactPage() {
                 Direct Channels
               </div>
               <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0a2540', marginBottom: '24px' }}>
-                Reach Our Duty Technical Superintendents
+                Reach Crest & Caliper Spares Operations Desk
               </h2>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>

@@ -122,7 +122,7 @@ export default function FloatingContact({ onOpenRFQ }: FloatingContactProps) {
       {/* Main Floating Trigger Button */}
       <button
         onClick={() => setExpanded(!expanded)}
-        aria-label="Contact Navyronix Operations"
+        aria-label="Contact Crest & Caliper Spares Operations"
         style={{
           backgroundColor: '#0a2540',
           color: '#ffffff',

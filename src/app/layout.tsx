@@ -3,9 +3,10 @@ import './globals.css';
 import LayoutWrapper from '@/components/LayoutWrapper';
 
 export const metadata: Metadata = {
-  title: 'Navyronix | Marine & Industrial Spares, Turbochargers, Pumps & Voyage Services',
-  description: 'Global supplier of marine diesel engine spares, Cummins/ABB turbochargers, starting air compressors, IMO screw pumps, valves, and 24/7 port agency & repair services.',
+  title: 'Crest & Caliper Spares | Marine & Industrial Spares, Turbochargers, Pumps & Voyage Services',
+  description: 'Global supplier of marine diesel engine spares, Cummins/ABB turbochargers, starting air compressors, IMO screw pumps, valves, own fleet logistics, and 24/7 port agency & repair services.',
   keywords: [
+    'Crest & Caliper Spares',
     'Marine Turbocharger',
     'Diesel Engine Spare Parts',
     'MAN B&W',
@@ -18,9 +19,13 @@ export const metadata: Metadata = {
     'Shiphandling',
     'Underwater Hull Cleaning',
     'Ship Spares Supplier',
-    'Navyronix'
+    'Own Fleet Marine Logistics'
   ],
-  authors: [{ name: 'Navyronix Global Marine' }],
+  authors: [{ name: 'Crest & Caliper Spares' }],
+  icons: {
+    icon: '/images/crest-caliper-logo.jpg',
+    apple: '/images/crest-caliper-logo.jpg'
+  },
   robots: 'index, follow'
 };
 

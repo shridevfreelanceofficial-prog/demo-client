@@ -39,7 +39,7 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const generatedId = 'NVX-RFQ-' + Math.floor(100000 + Math.random() * 900000);
+    const generatedId = 'CCS-RFQ-' + Math.floor(100000 + Math.random() * 900000);
     setRfqNumber(generatedId);
     setSubmitted(true);
   };

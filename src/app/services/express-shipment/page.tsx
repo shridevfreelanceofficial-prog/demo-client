@@ -4,7 +4,7 @@ import ServicePageTemplate from '@/components/ServicePageTemplate';
 import { SERVICES } from '@/data/services';
 
 export const metadata: Metadata = {
-  title: 'Global Express Marine Spare Parts Shipment & AOG Logistics | Navyronix',
+  title: 'Global Express Marine Spare Parts Shipment & AOG Logistics | Crest & Caliper Spares',
   description: 'Time-critical air freight, dedicated charter, on-board courier (OBC), and bonded customs clearance for ship spares in transit straight to vessel deck.'
 };
 

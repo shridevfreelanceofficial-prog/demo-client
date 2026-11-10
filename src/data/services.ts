@@ -3,11 +3,11 @@ import { ServiceDetail } from '@/types';
 export const SERVICES: Record<string, ServiceDetail> = {
   repair: {
     slug: 'repair',
-    title: 'Marine & Industrial Machinery Repair and Overhaul',
+    title: 'Marine Machinery Repair & Diesel Engine Overhaul',
     shortTitle: 'Repair & Overhaul',
-    tagline: '24/7 Riding Squads, Drydock Assistance & Precision Workshop Overhaul',
-    description: 'Navyronix delivers world-class mechanical, electrical, and automation repair services both afloat and in major drydocks globally. Our factory-trained marine engineers specialize in main engine reconditioning, in-situ crankshaft machining, turbocharger balancing, centrifugal pump overhauls, and switchboard troubleshooting.',
-    heroImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80',
+    tagline: '24/7 Flying Squads, In-Situ Machining & Precision Workshop Overhauls',
+    description: 'Crest & Caliper Spares delivers world-class mechanical, electrical, and automation repair services both afloat and in major drydocks globally. Our factory-trained marine engineers specialize in main engine reconditioning, in-situ crankshaft orbital grinding, turbocharger dynamic balancing, centrifugal pump overhauls, and main switchboard troubleshooting, deploying certified flying squads with specialized diagnostic tooling within 6 to 12 hours worldwide to ensure zero vessel downtime.',
+    heroImage: '/images/service-repair.jpg',
     capabilities: [
       'Main & Auxiliary Diesel Engine Full Overhaul (MAN B&W, Wärtsilä, Yanmar, Daihatsu)',
       'Dynamic Balancing & Reconditioning of Marine Turbochargers (ABB, Napier, Holset, MET)',
@@ -75,11 +75,11 @@ export const SERVICES: Record<string, ServiceDetail> = {
 
   shiphandling: {
     slug: 'shiphandling',
-    title: 'Port Agency, Husbandry & Vessel Shiphandling Services',
-    shortTitle: 'Shiphandling',
+    title: 'Port Agency, Husbandry & Vessel Shiphandling',
+    shortTitle: 'Shiphandling & Port Agency',
     tagline: 'Comprehensive Port Agency, Crew Logistics, Bunkering & Technical Husbandry',
-    description: 'Navyronix provides proactive vessel husbandry and port agency solutions across critical international trade hubs. We guarantee seamless vessel turnaround, customs clearance, owner protective agency (OPA), crew repatriation, fresh water supply, and certified marine logistics coordination.',
-    heroImage: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80',
+    description: 'Crest & Caliper Spares provides proactive vessel husbandry and port agency solutions across critical international trade hubs and anchorages. We guarantee seamless vessel turnaround, inward and outward customs clearance, Owner Protective Agency (OPA), crew changes and medical repatriation, fresh water and bunker fuel coordination, and dedicated Off-Port Limits (OPL) launch boat operations with 24/7 port superintendent attendance.',
+    heroImage: '/images/service-shiphandling.jpg',
     capabilities: [
       'Full Port Agency & Owners Protective Agency (OPA)',
       'Bunker Coordination (VLSFO, LSMGO, Biofuels) & ISO 8217 Sampling',
@@ -147,11 +147,11 @@ export const SERVICES: Record<string, ServiceDetail> = {
 
   'hull-cleaning': {
     slug: 'hull-cleaning',
-    title: 'Underwater Hull Cleaning, Propeller Polishing & Diving Services',
-    shortTitle: 'Hull Cleaning',
+    title: 'Underwater Hull Cleaning & Propeller Polishing',
+    shortTitle: 'Hull Cleaning & Diving',
     tagline: 'Eco-Friendly ROV Grooming, Diver Video Surveys & Fuel Efficiency Optimization',
-    description: 'Marine biofouling on ship hulls drastically increases hydrodynamic drag and fuel consumption by up to 25%. Navyronix deploys certified commercial diving teams and eco-friendly robotic hull crawlers (ROV) with bio-capture systems, delivering mirror-finish propeller polishing and Class-approved underwater surveys.',
-    heroImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80',
+    description: 'Marine biofouling on ship hulls drastically increases hydrodynamic drag and fuel consumption by up to 25%. Crest & Caliper Spares deploys certified commercial diving teams and eco-friendly robotic hull crawlers (ROV) equipped with suction-based bio-capture systems, delivering mirror-finish Rupert Grade A propeller polishing, sea chest cleaning, and Class-approved underwater surveys (UWILD / IWS) that fully comply with international port environmental regulations.',
+    heroImage: '/images/service-hull-cleaning.jpg',
     capabilities: [
       'Hydraulic Multi-Brush & Cavitation Jet Underwater Hull Cleaning',
       'Automated ROV Cleaning with Effluent Capture (Global Port Environmental Compliant)',
@@ -219,11 +219,11 @@ export const SERVICES: Record<string, ServiceDetail> = {
 
   'express-shipment': {
     slug: 'express-shipment',
-    title: 'Global Express Marine Spare Parts Shipment & AOG Logistics',
+    title: 'Global Express Marine Spares Shipment',
     shortTitle: 'Express Shipment',
     tagline: 'Time-Critical Door-to-Deck Global Delivery for Critical Machinery Spares',
-    description: 'When a critical vessel system fails, every hour of demurrage counts in tens of thousands of dollars. Navyronix Express Shipment provides white-glove, emergency air-charter, onboard courier (OBC), and specialized customs clearance for critical marine spares delivered straight to the vessel deck anywhere on earth.',
-    heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80',
+    description: 'When a critical vessel system fails, every hour of demurrage counts in tens of thousands of dollars. Crest & Caliper Spares Express Shipment provides white-glove, emergency air-charter, On-Board Courier (OBC / hand-carry), and specialized customs clearance for critical marine spares delivered straight to the vessel deck anywhere on earth, backed by door-to-deck transit tracking, dedicated launch boat boarding, and priority clearance under "Ship Spares in Transit" protocols.',
+    heroImage: '/images/service-express-shipment.jpg',
     capabilities: [
       '24/7/365 Aircraft on Ground (AOG) & Vessel Critical Spare Logistics',
       'On-Board Courier (OBC / Hand-Carry) for Emergency Circuit Boards & Injectors',
@@ -270,7 +270,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         step: '03',
         title: 'Direct Flight & Port Hub Arrival',
-        desc: 'Handover to Navyronix local port team, customs boarding escort, and harbor launch boat loading.'
+        desc: 'Handover to Crest & Caliper Spares local port team, customs boarding escort, and harbor launch boat loading.'
       },
       {
         step: '04',

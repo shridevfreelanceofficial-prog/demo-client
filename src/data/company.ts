@@ -1,13 +1,13 @@
 export const COMPANY_INFO = {
-  name: 'Navyronix',
+  name: 'Crest & Caliper Spares',
   tagline: 'Leading Global Marine & Industrial Technical Solutions',
-  subtagline: 'High-Performance Engine Spares, Genuine Machinery, Port Agency & 24/7 Voyage Engineering',
+  subtagline: 'High-Performance Engine Spares, Genuine Machinery, Own Fleet Logistics & 24/7 Voyage Engineering',
   phone: '+91 (0) 22 6890 4400',
   emergencyHotline: '+91 98200 48911',
   whatsappLink: 'https://wa.me/919820048911',
-  email: 'sales@navyronix.com',
-  opsEmail: 'operations@navyronix.com',
-  address: 'Navyronix Maritime Tower, Marine Lines, Port Boulevard, Mumbai 400001, India',
+  email: 'sales@crestandcaliper.com',
+  opsEmail: 'operations@crestandcaliper.com',
+  address: 'Crest & Caliper Maritime Tower, Marine Lines, Port Boulevard, Mumbai 400001, India',
   hubs: [
     { city: 'Singapore', country: 'Singapore', role: 'Southeast Asia Distribution Hub & OPL Launch Depot' },
     { city: 'Rotterdam', country: 'Netherlands', role: 'European Central Spares Logistics Hub' },

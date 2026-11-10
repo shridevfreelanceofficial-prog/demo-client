@@ -48,95 +48,86 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Navyronix Operations, I am inquiring about: ${product.name} (Model: ${product.model}, Part: ${product.partNumber || 'N/A'}). Please provide price, availability, and port delivery options.`
+    `Hello Crest & Caliper Spares Operations, I am inquiring about: ${product.name} (Model: ${product.model}, Part: ${product.partNumber || 'N/A'}). Please provide price, availability, and port delivery options.`
   );
 
   return (
     <>
-      {/* 1. Breadcrumbs & Product Title Banner - Featuring ship4.jpg Background */}
-      <section style={{
-        position: 'relative',
-        backgroundImage: 'linear-gradient(180deg, rgba(10, 37, 64, 0.84) 0%, rgba(10, 37, 64, 0.90) 100%), url("/images/ship4.jpg")',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        padding: '42px 0 36px',
-        color: '#ffffff',
-        borderBottom: '3px solid #0284c7',
-        overflow: 'hidden'
-      }}>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          {/* Breadcrumb Path */}
-          <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#94a3b8', marginBottom: '16px', flexWrap: 'wrap' }}>
-            <Link href="/" style={{ color: '#cbd5e1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+      {/* Clean Breadcrumb Bar */}
+      <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '14px 0' }}>
+        <div className="container">
+          <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.84rem', color: '#64748b', flexWrap: 'wrap' }}>
+            <Link href="/" style={{ color: '#0284c7', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
               Home
             </Link>
             <ChevronRight size={14} />
-            <Link href="/products" style={{ color: '#cbd5e1' }}>
+            <Link href="/products" style={{ color: '#0284c7', fontWeight: 600 }}>
               Products
             </Link>
             <ChevronRight size={14} />
-            <Link href={`/products?category=${encodeURIComponent(product.category)}`} style={{ color: '#38bdf8', fontWeight: 600 }}>
+            <Link href={`/products?category=${encodeURIComponent(product.category)}`} style={{ color: '#0284c7', fontWeight: 600 }}>
               {product.category}
             </Link>
             <ChevronRight size={14} />
-            <span style={{ color: '#ffffff', fontWeight: 600, maxWidth: '280px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ color: '#0a2540', fontWeight: 700, maxWidth: '280px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {product.model}
             </span>
           </nav>
-
-          {/* Product Header Badges & Title */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '10px' }}>
-            <span className="badge badge-blue" style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
-              {product.sector === 'marine' ? <Ship size={13} /> : <Factory size={13} />}
-              <span>{product.sector === 'marine' ? 'Marine Certified' : 'Industrial Equipment'}</span>
-            </span>
-
-            <span className="badge badge-navy" style={{ fontSize: '0.78rem', padding: '4px 10px', backgroundColor: '#0284c7' }}>
-              {product.category}
-            </span>
-
-            <span className="badge badge-green" style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
-              <CheckCircle2 size={13} /> {product.inStock ? 'Ready in Stock' : 'Fast Delivery'}
-            </span>
-          </div>
-
-          <h1 style={{
-            fontSize: 'clamp(1.8rem, 3.8vw, 2.8rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            lineHeight: 1.25,
-            marginBottom: '8px'
-          }}>
-            {product.name}
-          </h1>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.92rem', color: '#cbd5e1', flexWrap: 'wrap' }}>
-            <div>
-              <span style={{ color: '#94a3b8' }}>Model: </span>
-              <strong style={{ color: '#ffffff' }}>{product.model}</strong>
-            </div>
-            {product.partNumber && (
-              <>
-                <span style={{ color: '#475569' }}>•</span>
-                <div>
-                  <span style={{ color: '#94a3b8' }}>Part Number: </span>
-                  <strong style={{ color: '#38bdf8' }}>{product.partNumber}</strong>
-                </div>
-              </>
-            )}
-            <span style={{ color: '#475569' }}>•</span>
-            <div>
-              <span style={{ color: '#94a3b8' }}>Lead Time: </span>
-              <span style={{ color: '#4ade80', fontWeight: 600 }}>{product.leadTime}</span>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* 2. Main Product Details View Grid */}
-      <section style={{ padding: '50px 0 70px', backgroundColor: '#f8fafc' }}>
+      {/* Main Product Details View Grid */}
+      <section style={{ padding: '32px 0 70px', backgroundColor: '#f8fafc' }}>
         <div className="container">
+          
+          {/* Product Title & Badges Header */}
+          <div style={{ marginBottom: '28px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '10px' }}>
+              <span className="badge badge-blue" style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
+                {product.sector === 'marine' ? <Ship size={13} /> : <Factory size={13} />}
+                <span>{product.sector === 'marine' ? 'Marine Certified' : 'Industrial Equipment'}</span>
+              </span>
+
+              <span className="badge badge-navy" style={{ fontSize: '0.78rem', padding: '4px 10px', backgroundColor: '#0284c7' }}>
+                {product.category}
+              </span>
+
+              <span className="badge badge-green" style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
+                <CheckCircle2 size={13} /> {product.inStock ? 'Ready in Stock' : 'Fast Delivery'}
+              </span>
+            </div>
+
+            <h1 style={{
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)',
+              fontWeight: 800,
+              color: '#0a2540',
+              lineHeight: 1.25,
+              marginBottom: '8px'
+            }}>
+              {product.name}
+            </h1>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.92rem', color: '#64748b', flexWrap: 'wrap' }}>
+              <div>
+                <span>Model: </span>
+                <strong style={{ color: '#0a2540' }}>{product.model}</strong>
+              </div>
+              {product.partNumber && (
+                <>
+                  <span>•</span>
+                  <div>
+                    <span>Part Number: </span>
+                    <strong style={{ color: '#0284c7' }}>{product.partNumber}</strong>
+                  </div>
+                </>
+              )}
+              <span>•</span>
+              <div>
+                <span>Lead Time: </span>
+                <span style={{ color: '#16a34a', fontWeight: 600 }}>{product.leadTime}</span>
+              </div>
+            </div>
+          </div>
           
           <div style={{
             display: 'grid',

@@ -31,59 +31,22 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* 1. Header Banner */}
-      <section 
-        className="hero-header"
-        style={{
-          backgroundColor: '#0a2540',
-          padding: '70px 0 55px',
-          color: '#ffffff',
-          borderBottom: '3px solid #0284c7'
-        }}
-      >
-        <div className="container">
-          <div style={{ maxWidth: '850px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '4px', backgroundColor: 'rgba(2, 132, 199, 0.2)', color: '#38bdf8', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '16px' }}>
-              <Anchor size={15} /> Voyage Support & Port Engineering
-            </div>
-
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px', color: '#ffffff' }}>
-              Comprehensive Maritime Services & Technical Solutions
-            </h1>
-
-            <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6, marginBottom: '24px' }}>
-              From emergency voyage repairs and main engine overhaul to vessel husbandry, green hull grooming, and express air charter logistics — Navyronix keeps maritime vessels compliant, seaworthy, and on schedule.
-            </p>
-
-            <div className="btn-group-responsive">
-              <button 
-                onClick={() => openRFQ('Maritime Services General Inquiry')}
-                className="btn btn-primary"
-                style={{ padding: '12px 28px', backgroundColor: '#0284c7', borderColor: '#0284c7' }}
-              >
-                <FileSpreadsheet size={16} />
-                <span>Request Service Attendance</span>
-              </button>
-              <a 
-                href={`tel:${COMPANY_INFO.phone.replace(/[^0-9+]/g, '')}`}
-                className="btn"
-                style={{ 
-                  padding: '12px 24px', 
-                  backgroundColor: '#061c3d', 
-                  color: '#ffffff', 
-                  border: '1px solid rgba(255, 255, 255, 0.2)' 
-                }}
-              >
-                <PhoneCall size={16} color="#38bdf8" />
-                <span>24/7 Operations Desk</span>
-              </a>
-            </div>
+      {/* Breadcrumb Header */}
+      <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '14px 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b' }}>
+            <Link href="/" style={{ color: '#0284c7', fontWeight: 600 }}>Home</Link>
+            <span>/</span>
+            <span style={{ color: '#0a2540', fontWeight: 700 }}>Maritime Services</span>
+          </div>
+          <div style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+            24/7 Voyage Engineering & Port Agency Attendance
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 2. 4 Core Services Grid (Clean White Cards) */}
-      <section style={{ padding: '60px 0', backgroundColor: '#f8fafc' }}>
+      {/* 4 Core Services Grid */}
+      <section style={{ padding: '40px 0 60px', backgroundColor: '#f8fafc' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 40px' }}>
             <div style={{ color: '#0284c7', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>

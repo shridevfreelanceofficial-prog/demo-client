@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!product) {
     return {
-      title: 'Product Not Found | Navyronix',
+      title: 'Product Not Found | Crest & Caliper Spares',
     };
   }
 
   return {
-    title: `${product.name} - ${product.model} | Navyronix Marine Spares`,
+    title: `${product.name} - ${product.model} | Crest & Caliper Spares`,
     description: product.description,
   };
 }

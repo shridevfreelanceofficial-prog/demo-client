@@ -4,7 +4,7 @@ import ServicePageTemplate from '@/components/ServicePageTemplate';
 import { SERVICES } from '@/data/services';
 
 export const metadata: Metadata = {
-  title: 'Underwater Hull Cleaning, Propeller Polishing & Diving | Navyronix',
+  title: 'Underwater Hull Cleaning, Propeller Polishing & Diving | Crest & Caliper Spares',
   description: 'Eco-friendly ROV hull cleaning with bio-capture, Rupert Grade A propeller super-polishing, and Class-approved underwater surveys (UWILD / IWS).'
 };
 

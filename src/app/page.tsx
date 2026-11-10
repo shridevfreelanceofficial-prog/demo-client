@@ -9,17 +9,17 @@ import { PRODUCTS, MARINE_CATEGORIES } from '@/data/products';
 import { SERVICES } from '@/data/services';
 import { COMPANY_INFO } from '@/data/company';
 import { Product } from '@/types';
-import { 
-  Ship, 
-  ArrowRight, 
-  ShieldCheck, 
-  Wrench, 
-  Compass, 
-  Sparkles, 
-  PlaneTakeoff, 
-  CheckCircle2, 
-  Anchor, 
-  Clock, 
+import {
+  Ship,
+  ArrowRight,
+  ShieldCheck,
+  Wrench,
+  Compass,
+  Sparkles,
+  PlaneTakeoff,
+  CheckCircle2,
+  Anchor,
+  Clock,
   FileSpreadsheet,
   PhoneCall,
   Search,
@@ -68,7 +68,7 @@ export default function HomePage() {
       }}>
         <div className="container">
           <div style={{ maxWidth: '850px' }}>
-            
+
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -113,7 +113,7 @@ export default function HomePage() {
 
             {/* Action Buttons */}
             <div className="btn-group-responsive" style={{ marginBottom: '36px' }}>
-              <button 
+              <button
                 onClick={() => openRFQ()}
                 className="btn btn-primary"
                 style={{
@@ -128,8 +128,8 @@ export default function HomePage() {
                 <span>Request a Quote (RFQ)</span>
               </button>
 
-              <Link 
-                href="/products" 
+              <Link
+                href="/products"
                 className="btn btn-outline-white"
                 style={{ padding: '14px 28px', fontSize: '1rem' }}
               >
@@ -137,7 +137,7 @@ export default function HomePage() {
                 <ArrowRight size={18} />
               </Link>
 
-              <a 
+              <a
                 href={`tel:${COMPANY_INFO.emergencyHotline.replace(/\s+/g, '')}`}
                 className="btn btn-red"
                 style={{ padding: '14px 24px', fontSize: '1rem' }}
@@ -148,7 +148,7 @@ export default function HomePage() {
             </div>
 
             {/* Quick Part / Model Search Box */}
-            <div 
+            <div
               className="hero-search-box"
               style={{
                 background: '#ffffff',
@@ -164,7 +164,7 @@ export default function HomePage() {
               <div style={{ paddingLeft: '12px', color: '#0a2540' }}>
                 <Search size={20} />
               </div>
-              <input 
+              <input
                 type="text"
                 placeholder="Search marine part number, turbocharger model (e.g. QSK19, HX83, 2CY)..."
                 value={searchQuery}
@@ -183,9 +183,9 @@ export default function HomePage() {
                   fontFamily: 'inherit'
                 }}
               />
-              <button 
+              <button
                 onClick={() => {
-                  window.location.href = searchQuery 
+                  window.location.href = searchQuery
                     ? `/products?search=${encodeURIComponent(searchQuery)}`
                     : '/products';
                 }}
@@ -204,7 +204,7 @@ export default function HomePage() {
       <section className="section section-white">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
-            
+
             {/* Left: User Uploaded Ship Images */}
             <div style={{ position: 'relative' }}>
               {/* Primary Image: Ship with products loaded (ship3.webp) */}
@@ -214,8 +214,8 @@ export default function HomePage() {
                 boxShadow: '0 15px 35px rgba(10, 37, 64, 0.15)',
                 border: '4px solid #ffffff'
               }}>
-                <img 
-                  src="/images/ship3.webp" 
+                <img
+                  src="/images/ship3.webp"
                   alt="Vessel Loaded with Marine Spares"
                   style={{ width: '100%', height: '360px', objectFit: 'cover' }}
                 />
@@ -233,8 +233,8 @@ export default function HomePage() {
                 border: '4px solid #ffffff',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
               }} className="nav-desktop-only">
-                <img 
-                  src="/images/ship2.jpeg" 
+                <img
+                  src="/images/ship2.jpeg"
                   alt="Marine Anchor and Cargo Loading"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -262,12 +262,12 @@ export default function HomePage() {
             {/* Right: Company Profile & Capabilities */}
             <div>
               <div className="section-header text-left" style={{ marginBottom: '24px' }}>
-                <span className="sub-title">About Navyronix</span>
+                <span className="sub-title">About Crest & Caliper Spares</span>
                 <h2 className="main-title">Ship Machinery & Engine Spares Supplier</h2>
               </div>
 
               <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '16px', color: '#475569' }}>
-                <strong>Navyronix</strong> is a premier global provider of genuine and OEM marine machinery, main & auxiliary diesel engine spare parts, and comprehensive port agency engineering.
+                <strong>Crest & Caliper Spares</strong> is a premier global provider of genuine and OEM marine machinery, main & auxiliary diesel engine spare parts, and comprehensive port agency engineering.
               </p>
 
               <p style={{ fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '24px', color: '#64748b' }}>
@@ -313,7 +313,7 @@ export default function HomePage() {
       {/* 4. The 12 Marine Products Categories (Clean Light Grey Section) */}
       <section className="section section-light">
         <div className="container">
-          
+
           <div className="section-header">
             <span className="sub-title">Marine Products Range</span>
             <h2 className="main-title">12 Marine Equipment Categories</h2>
@@ -330,7 +330,7 @@ export default function HomePage() {
             {MARINE_CATEGORIES.map((cat, idx) => {
               const imgSrc = categoryImages[cat] || '/images/ship2.jpeg';
               return (
-                <Link 
+                <Link
                   key={idx}
                   href={`/products?category=${encodeURIComponent(cat)}`}
                   className="card-clean"
@@ -351,8 +351,8 @@ export default function HomePage() {
                     justifyContent: 'center',
                     padding: '12px'
                   }}>
-                    <img 
-                      src={imgSrc} 
+                    <img
+                      src={imgSrc}
                       alt={cat}
                       style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }}
                       loading="lazy"
@@ -413,7 +413,7 @@ export default function HomePage() {
       {/* 5. Featured Products Showcase (WZS Marine Turbochargers & Spares) */}
       <section className="section section-white">
         <div className="container">
-          
+
           <div className="section-header">
             <span className="sub-title">Inventory Spotlight</span>
             <h2 className="main-title">Featured Marine Spares & Turbochargers</h2>
@@ -424,7 +424,7 @@ export default function HomePage() {
 
           <div className="grid-4" style={{ marginBottom: '40px' }}>
             {featuredProducts.map((product) => (
-              <ProductCard 
+              <ProductCard
                 key={product.id}
                 product={product}
                 onViewDetails={(p) => setSelectedProduct(p)}
@@ -434,7 +434,7 @@ export default function HomePage() {
           </div>
 
           <div style={{ textAlign: 'center' }}>
-            <button 
+            <button
               onClick={() => openRFQ()}
               className="btn btn-primary"
               style={{ padding: '14px 36px', fontSize: '0.95rem' }}
@@ -481,7 +481,7 @@ export default function HomePage() {
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button 
+            <button
               onClick={() => openRFQ()}
               className="btn btn-primary"
               style={{
@@ -504,7 +504,7 @@ export default function HomePage() {
       {/* 7. The 4 Maritime Services (Clean White Section) */}
       <section className="section section-white">
         <div className="container">
-          
+
           <div className="section-header">
             <span className="sub-title">Technical Support</span>
             <h2 className="main-title">Our Maritime Services</h2>
@@ -639,7 +639,7 @@ export default function HomePage() {
           <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '620px', margin: '0 auto 24px' }}>
             Our marine superintendents provide quotation and availability within 60 minutes.
           </p>
-          <button 
+          <button
             onClick={() => openRFQ()}
             className="btn btn-primary"
             style={{

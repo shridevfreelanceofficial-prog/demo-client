@@ -84,12 +84,12 @@ export default function Navbar({ onOpenRFQ }: NavbarProps) {
             </a>
             <span style={{ color: '#475569' }} className="nav-desktop-only">•</span>
             <a 
-              href="mailto:sales@navyronix.com" 
+              href={`mailto:${COMPANY_INFO.email}`} 
               style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#ffffff' }}
               className="nav-desktop-only"
             >
               <Mail size={13} />
-              <span>sales@navyronix.com</span>
+              <span>{COMPANY_INFO.email}</span>
             </a>
           </div>
 
@@ -106,47 +106,21 @@ export default function Navbar({ onOpenRFQ }: NavbarProps) {
         borderBottom: '1px solid #e2e8f0',
         transition: 'all 0.25s ease'
       }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '74px', padding: '8px 16px' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '88px', padding: '10px 16px' }}>
           
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '8px',
-              backgroundColor: '#0a2540',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              boxShadow: '0 2px 8px rgba(10,37,64,0.2)',
-              flexShrink: 0
-            }}>
-              <Anchor size={24} color="#ffffff" />
-            </div>
-
-            <div>
-              <div style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.4rem, 4vw, 1.75rem)',
-                fontWeight: 800,
-                color: '#0a2540',
-                letterSpacing: '0.02em',
-                lineHeight: 1
-              }}>
-                NAVY<span style={{ color: '#0284c7' }}>RONIX</span>
-              </div>
-              <div style={{
-                fontSize: '0.64rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                color: '#64748b',
-                fontWeight: 700,
-                marginTop: '3px'
-              }}>
-                Marine & Industrial Spares
-              </div>
-            </div>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <img 
+              src="/images/crest-caliper-logo.jpg" 
+              alt="Crest & Caliper Spares" 
+              style={{
+                height: 'clamp(58px, 9vw, 80px)',
+                width: 'auto',
+                maxWidth: '300px',
+                objectFit: 'contain',
+                display: 'block'
+              }}
+            />
           </Link>
 
           {/* Desktop Nav Items */}
@@ -529,6 +503,21 @@ export default function Navbar({ onOpenRFQ }: NavbarProps) {
             </div>
 
             <Link 
+              href="/own-fleet"
+              style={{
+                fontSize: '0.92rem',
+                fontWeight: 700,
+                color: pathname === '/own-fleet' ? '#0284c7' : '#0a2540',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                padding: '10px 0',
+                transition: 'color 0.2s ease'
+              }}
+            >
+              Own Fleet
+            </Link>
+
+            <Link 
               href="/contact"
               style={{
                 fontSize: '0.92rem',
@@ -856,6 +845,28 @@ export default function Navbar({ onOpenRFQ }: NavbarProps) {
                   </div>
                 )}
               </div>
+
+              {/* Own Fleet */}
+              <Link 
+                href="/own-fleet" 
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  borderTop: '1px solid #f1f5f9',
+                  padding: '10px',
+                  fontWeight: 700,
+                  color: pathname === '/own-fleet' ? '#0284c7' : '#0a2540',
+                  fontSize: '1rem',
+                  textTransform: 'uppercase',
+                  borderRadius: '6px',
+                  backgroundColor: pathname === '/own-fleet' ? '#f0f9ff' : 'transparent',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}
+              >
+                <span>Own Fleet</span>
+                <ChevronRight size={16} color="#94a3b8" />
+              </Link>
 
               {/* Contact Us */}
               <Link 
