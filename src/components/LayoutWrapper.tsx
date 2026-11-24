@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import RFQModal from './RFQModal';
 import FloatingContact from './FloatingContact';
 
 interface RFQContextType {
@@ -17,17 +16,12 @@ export const RFQContext = createContext<RFQContextType>({
 export const useRFQ = () => useContext(RFQContext);
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  const [rfqOpen, setRfqOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<string | undefined>(undefined);
-
+  // Safe fallback if any child still invokes openRFQ: redirect to WhatsApp
   const openRFQ = (productName?: string) => {
-    setSelectedProduct(productName);
-    setRfqOpen(true);
-  };
-
-  const closeRFQ = () => {
-    setRfqOpen(false);
-    setSelectedProduct(undefined);
+    const text = productName 
+      ? `Hello Crest & Caliper Spares, I would like to inquire about: ${productName}`
+      : 'Hello Crest & Caliper Spares, I have an urgent inquiry.';
+    window.open(`https://wa.me/919819899051?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -37,12 +31,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         {children}
       </main>
       <Footer />
-      <RFQModal 
-        isOpen={rfqOpen} 
-        onClose={closeRFQ} 
-        defaultProduct={selectedProduct} 
-      />
-      <FloatingContact onOpenRFQ={openRFQ} />
+      <FloatingContact />
     </RFQContext.Provider>
   );
 }

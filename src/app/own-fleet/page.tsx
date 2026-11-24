@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useRFQ } from '@/components/LayoutWrapper';
 import { 
   Ship, 
   ChevronRight, 
@@ -11,7 +10,7 @@ import {
   Clock, 
   MapPin, 
   CheckCircle2, 
-  FileSpreadsheet, 
+  MessageCircle, 
   PhoneCall, 
   Gauge, 
   Compass, 
@@ -166,8 +165,6 @@ const FLEET_VESSELS: FleetVessel[] = [
 ];
 
 export default function OwnFleetPage() {
-  const { openRFQ } = useRFQ();
-
   return (
     <>
       {/* 1. Breadcrumb Header */}
@@ -203,14 +200,24 @@ export default function OwnFleetPage() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <button 
-                onClick={() => openRFQ('Own Fleet Launch & Delivery Booking')}
+              <a 
+                href="https://wa.me/919819899051?text=Fleet%20Launch%20and%20Delivery%20Booking"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
-                style={{ padding: '12px 24px', fontSize: '0.88rem', justifyContent: 'center' }}
+                style={{
+                  padding: '12px 24px',
+                  fontSize: '0.88rem',
+                  justifyContent: 'center',
+                  backgroundColor: '#25D366',
+                  borderColor: '#25D366',
+                  color: '#ffffff',
+                  textDecoration: 'none'
+                }}
               >
-                <FileSpreadsheet size={16} />
-                <span>Book Fleet Launch / Delivery</span>
-              </button>
+                <MessageCircle size={16} />
+                <span>Book Fleet Launch via WhatsApp</span>
+              </a>
 
               <a 
                 href={`tel:${COMPANY_INFO.emergencyHotline.replace(/[^0-9+]/g, '')}`}
@@ -440,14 +447,26 @@ export default function OwnFleetPage() {
                         Classification: <strong style={{ color: '#0a2540' }}>{vessel.specs[0].value}</strong>
                       </div>
 
-                      <button
-                        onClick={() => openRFQ(`Fleet Charter / Delivery Service for ${vessel.name}`)}
+                      <a
+                        href={`https://wa.me/919819899051?text=${encodeURIComponent(`Fleet Charter / Delivery Service for ${vessel.name}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="btn btn-primary"
-                        style={{ padding: '8px 18px', fontSize: '0.84rem' }}
+                        style={{
+                          padding: '8px 18px',
+                          fontSize: '0.84rem',
+                          backgroundColor: '#25D366',
+                          borderColor: '#25D366',
+                          color: '#ffffff',
+                          textDecoration: 'none',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
                       >
-                        <FileSpreadsheet size={14} />
-                        <span>Book This Vessel</span>
-                      </button>
+                        <MessageCircle size={14} />
+                        <span>Book via WhatsApp</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -481,14 +500,25 @@ export default function OwnFleetPage() {
             </div>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <button
-                onClick={() => openRFQ('Emergency Anchorage Launch Request')}
+              <a
+                href="https://wa.me/919819899051?text=Emergency%20Anchorage%20Launch%20Request"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
-                style={{ padding: '12px 24px', backgroundColor: '#0284c7', borderColor: '#0284c7' }}
+                style={{
+                  padding: '12px 24px',
+                  backgroundColor: '#25D366',
+                  borderColor: '#25D366',
+                  color: '#ffffff',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
               >
-                <FileSpreadsheet size={16} />
-                <span>Submit Launch RFQ</span>
-              </button>
+                <MessageCircle size={16} />
+                <span>Book Launch on WhatsApp</span>
+              </a>
               <Link
                 href="/contact"
                 className="btn"

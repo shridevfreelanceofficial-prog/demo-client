@@ -1,15 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Phone, MessageCircle, FileSpreadsheet, X, ChevronUp } from 'lucide-react';
+import { Phone, MessageCircle } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/company';
 
-interface FloatingContactProps {
-  onOpenRFQ?: (productName?: string) => void;
-}
-
-export default function FloatingContact({ onOpenRFQ }: FloatingContactProps) {
-  const [expanded, setExpanded] = useState(false);
+export default function FloatingContact() {
+  const [hoveredBtn, setHoveredBtn] = useState<'whatsapp' | 'call' | null>(null);
 
   return (
     <div 
@@ -17,129 +13,113 @@ export default function FloatingContact({ onOpenRFQ }: FloatingContactProps) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
-        gap: '12px'
+        alignItems: 'flex-start',
+        gap: '12px',
+        zIndex: 999
       }}
     >
-      {/* Expanded Quick Contact Drawer */}
-      {expanded && (
-        <div style={{
-          backgroundColor: '#ffffff',
-          border: '1px solid #cbd5e1',
-          borderRadius: '12px',
-          padding: '18px',
-          boxShadow: '0 15px 35px rgba(10, 37, 64, 0.2)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          minWidth: '260px',
-          maxWidth: 'calc(100vw - 32px)',
-          animation: 'fadeIn 0.2s ease'
-        }}>
-          <div style={{
+      {/* 1. WhatsApp Button (Directly ABOVE Call Icon) */}
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <a
+          href="https://wa.me/919819899051"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with Crest & Caliper Spares on WhatsApp (98198 99051)"
+          onMouseEnter={() => setHoveredBtn('whatsapp')}
+          onMouseLeave={() => setHoveredBtn(null)}
+          style={{
+            width: '54px',
+            height: '54px',
+            borderRadius: '50%',
+            backgroundColor: '#25D366',
+            color: '#ffffff',
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
-            borderBottom: '1px solid #e2e8f0',
-            paddingBottom: '8px'
+            justifyContent: 'center',
+            boxShadow: '0 8px 24px rgba(37, 211, 102, 0.45)',
+            transition: 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            transform: hoveredBtn === 'whatsapp' ? 'scale(1.1)' : 'scale(1)',
+            textDecoration: 'none'
+          }}
+        >
+          <MessageCircle size={28} />
+        </a>
+
+        {/* Floating Tooltip Pill */}
+        {hoveredBtn === 'whatsapp' && (
+          <div style={{
+            position: 'absolute',
+            left: '66px',
+            backgroundColor: '#0a2540',
+            color: '#ffffff',
+            padding: '7px 14px',
+            borderRadius: '6px',
+            fontSize: '0.8rem',
+            fontWeight: 700,
+            whiteSpace: 'nowrap',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            pointerEvents: 'none',
+            animation: 'fadeIn 0.15s ease'
           }}>
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0a2540', textTransform: 'uppercase' }}>
-              24/7 Operations Desk
-            </span>
-            <button 
-              onClick={() => setExpanded(false)}
-              style={{ color: '#64748b', cursor: 'pointer' }}
-            >
-              <X size={16} />
-            </button>
+            <span style={{ color: '#25D366' }}>●</span>
+            <span>WhatsApp (98198 99051)</span>
           </div>
+        )}
+      </div>
 
-          {/* Quick RFQ Trigger */}
-          <button 
-            onClick={() => {
-              setExpanded(false);
-              if (onOpenRFQ) onOpenRFQ();
-            }}
-            className="btn btn-primary"
-            style={{
-              padding: '10px 14px',
-              fontSize: '0.85rem',
-              justifyContent: 'center',
-              backgroundColor: '#0284c7',
-              borderColor: '#0284c7'
-            }}
-          >
-            <FileSpreadsheet size={16} />
-            <span>Instant Quote / RFQ</span>
-          </button>
+      {/* 2. Call Button (Directly Below WhatsApp Icon) */}
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <a
+          href="tel:9819899051"
+          aria-label="Call Crest & Caliper Spares Operations (98198 99051)"
+          onMouseEnter={() => setHoveredBtn('call')}
+          onMouseLeave={() => setHoveredBtn(null)}
+          style={{
+            width: '54px',
+            height: '54px',
+            borderRadius: '50%',
+            backgroundColor: '#0a2540',
+            color: '#38bdf8',
+            border: '2px solid #38bdf8',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 24px rgba(10, 37, 64, 0.4)',
+            transition: 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            transform: hoveredBtn === 'call' ? 'scale(1.1)' : 'scale(1)',
+            textDecoration: 'none'
+          }}
+        >
+          <Phone size={24} />
+        </a>
 
-          {/* WhatsApp Direct */}
-          <a
-            href={COMPANY_INFO.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              backgroundColor: '#25D366',
-              color: '#ffffff',
-              padding: '10px 14px',
-              borderRadius: '6px',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              textDecoration: 'none'
-            }}
-          >
-            <MessageCircle size={16} />
-            <span>WhatsApp Operations</span>
-          </a>
-
-          {/* Direct Phone Call */}
-          <a
-            href={`tel:${COMPANY_INFO.phone.replace(/[^0-9+]/g, '')}`}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              backgroundColor: '#0a2540',
-              color: '#ffffff',
-              padding: '10px 14px',
-              borderRadius: '6px',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              textDecoration: 'none'
-            }}
-          >
-            <Phone size={16} />
-            <span>Call Duty Desk</span>
-          </a>
-        </div>
-      )}
-
-      {/* Main Floating Trigger Button */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        aria-label="Contact Crest & Caliper Spares Operations"
-        style={{
-          backgroundColor: '#0a2540',
-          color: '#ffffff',
-          width: '56px',
-          height: '56px',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 8px 25px rgba(10, 37, 64, 0.35)',
-          cursor: 'pointer',
-          border: '2px solid #ffffff',
-          transition: 'all 0.25s ease'
-        }}
-      >
-        {expanded ? <ChevronUp size={24} /> : <Phone size={24} />}
-      </button>
+        {/* Floating Tooltip Pill */}
+        {hoveredBtn === 'call' && (
+          <div style={{
+            position: 'absolute',
+            left: '66px',
+            backgroundColor: '#0a2540',
+            color: '#ffffff',
+            padding: '7px 14px',
+            borderRadius: '6px',
+            fontSize: '0.8rem',
+            fontWeight: 700,
+            whiteSpace: 'nowrap',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            pointerEvents: 'none',
+            animation: 'fadeIn 0.15s ease'
+          }}>
+            <span style={{ color: '#38bdf8' }}>●</span>
+            <span>Call 24/7 (98198 99051)</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

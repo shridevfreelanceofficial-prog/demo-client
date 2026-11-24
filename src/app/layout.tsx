@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     'Cummins HX82 HX83',
     'Marine Pumps',
     'Compressors',
-    'Shiphandling',
+    'Purifiers',
+    'Heat Exchangers',
     'Underwater Hull Cleaning',
     'Ship Spares Supplier',
     'Own Fleet Marine Logistics'

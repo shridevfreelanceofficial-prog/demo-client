@@ -14,7 +14,7 @@ import {
   Ship, 
   Factory, 
   X, 
-  FileSpreadsheet, 
+  MessageCircle, 
   Layers
 } from 'lucide-react';
 
@@ -376,10 +376,24 @@ function ProductsContent() {
               <button onClick={clearFilters} className="btn btn-outline" style={{ marginRight: '10px' }}>
                 Reset Filters
               </button>
-              <button onClick={() => openRFQ(searchQuery || 'Custom Inquiry')} className="btn btn-primary">
-                <FileSpreadsheet size={16} />
-                <span>Submit RFQ</span>
-              </button>
+              <a 
+                href={`https://wa.me/919819899051?text=${encodeURIComponent(`Inquiry for marine part: ${searchQuery || 'Parts request'}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{
+                  backgroundColor: '#25D366',
+                  borderColor: '#25D366',
+                  color: '#ffffff',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <MessageCircle size={16} />
+                <span>Inquire on WhatsApp</span>
+              </a>
             </div>
           )}
 

@@ -20,7 +20,7 @@ import {
   CheckCircle2,
   Anchor,
   Clock,
-  FileSpreadsheet,
+  MessageCircle,
   PhoneCall,
   Search,
   Award,
@@ -36,37 +36,65 @@ export default function HomePage() {
   // Sliced featured products
   const featuredProducts = PRODUCTS.slice(0, 8);
 
-  const categoryImages: Record<string, string> = {
-    'Engine Spare Parts': '/images/engine_zxq100-12-siemens-generator-rotary-rectifier-module-wuxi-feihang-j.webp',
-    'Turbochargers': '/images/turbo_qsk19-turbocharger-hx83-assy4041703-cust4041702-288177-463456-1-j.webp',
-    'Compressors': '/images/deck_three-lobe-rotary-blower-tss-32-for-marine-sewage-1-4493-j.webp',
-    'Pumps': '/images/pump_marine-lube-oil-gear-pump-2cy-1-1-14-5-2-5345-1-j.webp',
-    'Valves': '/images/valve_5683468346345634-6marine-steel-globe-valve-j.webp',
-    'Motors': '/images/motor_y-h-series-ip44-marine-three-phase-asynchronous-motor-634-j.webp',
-    'Navigation Equipment': '/images/nav_wdlych-marine-tachometer-with-backlight-and-bracket-192-192cm-1-j.webp',
-    'Automation Systems': '/images/nav_pdcr-921-1742-pressure-transducer-pdcr-is-1745-is-0069-1-j.webp',
-    'Electrical Equipment': '/images/elec_2236674088_1185364784-j.webp',
-    'Anchors': '/images/ship2.jpeg',
-    'Ropes': '/images/ship3.webp',
-    'Stores': '/images/deck_german-centamaxcm3500-marine-diesel-engine-vasiland-generator-set-high-elasticity-coupling-rubber-pad-1-8880-j.webp'
+  const categoryDescriptions: Record<string, string> = {
+    'Engine Spare Parts': 'Pistons, cylinder liners, cylinder heads, valves & fuel injection systems',
+    'Turbochargers': 'Complete assemblies, rotor shafts, turbine blades & nozzle rings',
+    'Purifiers': 'Centrifugal fuel & lube oil separators, bowls & seal rings',
+    'Heat Exchangers': 'Plate type coolers, titanium plates, gaskets & fresh water generators',
+    'Compressors': '2-stage marine air compressors, valve plates, piston rings & gaskets',
+    'Pumps': 'Lube oil, ballast, centrifugal, screw, boiler feed & oily bilge pumps',
+    'Valves': 'Marine JIS/DIN bronze & cast steel globe, butterfly, storm & safety valves',
+    'Motors': 'IP44 & IP56 marine 3-phase asynchronous & explosion-proof electric motors',
+    'Navigation Equipment': 'Radar scanners, ECDIS, gyrocompasses, GPS & tachometer indicators',
+    'Automation Systems': 'Pressure transducers, temperature transmitters, sensors & PLC units',
+    'Electrical Equipment': 'Generators, rectifiers, main switchboards, circuit breakers & relays',
+    'Anchors': 'Stockless bower anchors, stud link anchor chains & kenter shackles',
+    'Ropes': 'Mooring tails, polypropylene, wire ropes & ultra-high molecular synthetic lines',
+    'Stores': 'Deck consumables, engine room pneumatic tools & marine hardware supplies'
   };
 
   return (
     <>
-      {/* 1. Sticked Ship GIF Background (As Requested: scrollable content, fixed gif) */}
-      <div className="fixed-ship-bg" />
-      <div className="fixed-ship-overlay" />
-
-      {/* 2. Hero Section over Fixed Ship GIF */}
+      {/* 2. Hero Section with Local Video Background */}
       <section style={{
         position: 'relative',
         minHeight: '84vh',
         display: 'flex',
         alignItems: 'center',
         padding: '80px 0',
-        zIndex: 1
+        overflow: 'hidden'
       }}>
-        <div className="container">
+        {/* Background Video */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          zIndex: 0
+        }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          >
+            <source src="/video/ship_hero.mp4" type="video/mp4" />
+          </video>
+          {/* Dark Navy Overlay for Crisp Readability */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(10, 37, 64, 0.72) 0%, rgba(10, 37, 64, 0.5) 45%, rgba(10, 37, 64, 0.88) 100%)'
+          }} />
+        </div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '850px' }}>
 
             <div style={{
@@ -113,20 +141,27 @@ export default function HomePage() {
 
             {/* Action Buttons */}
             <div className="btn-group-responsive" style={{ marginBottom: '36px' }}>
-              <button
-                onClick={() => openRFQ()}
+              <a
+                href="https://wa.me/919819899051?text=Inquiry%20regarding%20marine%20spares"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
                 style={{
-                  backgroundColor: '#0284c7',
-                  borderColor: '#0284c7',
-                  padding: '14px 32px',
+                  backgroundColor: '#25D366',
+                  borderColor: '#25D366',
+                  padding: '14px 28px',
                   fontSize: '1rem',
-                  boxShadow: '0 4px 15px rgba(2,132,199,0.4)'
+                  boxShadow: '0 4px 15px rgba(37,211,102,0.4)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  color: '#ffffff',
+                  textDecoration: 'none'
                 }}
               >
-                <FileSpreadsheet size={18} />
-                <span>Request a Quote (RFQ)</span>
-              </button>
+                <MessageCircle size={18} />
+                <span>Chat on WhatsApp</span>
+              </a>
 
               <Link
                 href="/products"
@@ -310,7 +345,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. The 12 Marine Products Categories (Clean Light Grey Section) */}
+      {/* 4. The 12 Marine Products Categories (Clean Technical Cards - No Images) */}
       <section className="section section-light">
         <div className="container">
 
@@ -324,76 +359,77 @@ export default function HomePage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',
-            gap: '18px'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: '20px'
           }}>
             {MARINE_CATEGORIES.map((cat, idx) => {
-              const imgSrc = categoryImages[cat] || '/images/ship2.jpeg';
+              const desc = categoryDescriptions[cat] || 'Certified spares and assemblies for commercial marine vessels.';
               return (
                 <Link
                   key={idx}
                   href={`/products?category=${encodeURIComponent(cat)}`}
-                  className="card-clean"
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    textDecoration: 'none'
-                  }}
-                >
-                  {/* Category Real Photo */}
-                  <div style={{
-                    width: '100%',
-                    height: '180px',
-                    backgroundColor: '#ffffff',
-                    borderBottom: '1px solid #e2e8f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '12px'
-                  }}>
-                    <img
-                      src={imgSrc}
-                      alt={cat}
-                      style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }}
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Title & Link */}
-                  <div style={{
-                    padding: '16px 20px',
-                    backgroundColor: '#ffffff',
-                    display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexGrow: 1
-                  }}>
-                    <div>
-                      <h4 style={{
-                        fontSize: '1rem',
-                        fontWeight: 700,
-                        color: '#0a2540',
-                        marginBottom: '4px'
-                      }}>
-                        {cat}
-                      </h4>
-                      <span style={{ fontSize: '0.78rem', color: '#0284c7', fontWeight: 600 }}>
-                        View Products Catalog
-                      </span>
-                    </div>
-
+                    padding: '24px',
+                    backgroundColor: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '10px',
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  className="hover:border-sky-500 hover:shadow-md"
+                >
+                  <div>
                     <div style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '50%',
-                      backgroundColor: '#f1f5f9',
-                      display: 'flex',
+                      display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#0a2540'
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '8px',
+                      backgroundColor: '#e0f2fe',
+                      color: '#0284c7',
+                      marginBottom: '16px'
                     }}>
-                      <ChevronRight size={16} />
+                      <Layers size={22} />
                     </div>
+
+                    <h4 style={{
+                      fontSize: '1.1rem',
+                      fontWeight: 800,
+                      color: '#0a2540',
+                      marginBottom: '8px',
+                      lineHeight: 1.3
+                    }}>
+                      {cat}
+                    </h4>
+
+                    <p style={{
+                      fontSize: '0.86rem',
+                      color: '#64748b',
+                      lineHeight: 1.5,
+                      margin: 0
+                    }}>
+                      {desc}
+                    </p>
+                  </div>
+
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginTop: '20px',
+                    paddingTop: '12px',
+                    borderTop: '1px solid #f1f5f9',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    color: '#0284c7'
+                  }}>
+                    <span>Explore Spares</span>
+                    <ChevronRight size={16} />
                   </div>
                 </Link>
               );
@@ -418,7 +454,7 @@ export default function HomePage() {
             <span className="sub-title">Inventory Spotlight</span>
             <h2 className="main-title">Featured Marine Spares & Turbochargers</h2>
             <p style={{ maxWidth: '650px', margin: '14px auto 0', color: '#64748b' }}>
-              Real product details and images extracted from WZS Marine Service catalog.
+              Verified technical specifications, OEM part numbers, and classification certificates for marine machinery.
             </p>
           </div>
 
@@ -433,28 +469,46 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <button
-              onClick={() => openRFQ()}
-              className="btn btn-primary"
-              style={{ padding: '14px 36px', fontSize: '0.95rem' }}
+          <div style={{ textAlign: 'center', padding: '0 12px' }}>
+            <a
+              href="https://wa.me/919819899051?text=Inquiry%20regarding%20marine%20equipment"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-vessel-inquiry"
+              style={{
+                padding: '10px 20px',
+                fontSize: '0.84rem',
+                backgroundColor: '#25D366',
+                borderColor: '#25D366',
+                color: '#ffffff',
+                textDecoration: 'none',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
             >
-              <FileSpreadsheet size={18} />
-              <span>Submit General Vessel Inquiry</span>
-            </button>
+              <MessageCircle size={15} />
+              <span>Submit Vessel Enquiry via WhatsApp</span>
+            </a>
           </div>
 
         </div>
       </section>
 
-      {/* 6. Translucent Section revealing the Sticked ship.gif Background */}
+      {/* 6. Global Maritime Delivery Network with Animated Ocean Ship GIF Background */}
       <section style={{
         position: 'relative',
-        padding: '90px 0',
-        backgroundColor: 'rgba(10, 37, 64, 0.78)',
-        backdropFilter: 'blur(4px)',
+        padding: '100px 0',
         color: '#ffffff',
         textAlign: 'center',
+        backgroundImage: `linear-gradient(rgba(10, 37, 64, 0.78), rgba(10, 37, 64, 0.88)), url('/gifs/ship.gif')`,
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        borderTop: '3px solid #0284c7',
+        borderBottom: '3px solid #0284c7',
         zIndex: 1
       }}>
         <div className="container" style={{ maxWidth: '820px' }}>
@@ -466,7 +520,8 @@ export default function HomePage() {
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: 800,
             color: '#ffffff',
-            marginBottom: '16px'
+            marginBottom: '16px',
+            textShadow: '0 2px 10px rgba(0,0,0,0.8)'
           }}>
             Fast Global Delivery to Vessel Anchorage & Berth
           </h2>
@@ -475,24 +530,32 @@ export default function HomePage() {
             fontSize: '1.1rem',
             color: '#e2e8f0',
             lineHeight: 1.7,
-            marginBottom: '32px'
+            marginBottom: '32px',
+            textShadow: '0 1px 4px rgba(0,0,0,0.8)'
           }}>
             Whether your vessel is calling Singapore, Rotterdam, Fujairah, or Houston — our logistics teams ensure smooth customs clearance under &ldquo;Ship Spares in Transit&rdquo; and immediate launch boat boarding.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button
-              onClick={() => openRFQ()}
+            <a
+              href="https://wa.me/919819899051?text=Urgent%20vessel%20delivery%20inquiry"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary"
               style={{
-                backgroundColor: '#0284c7',
-                borderColor: '#0284c7',
-                padding: '14px 34px'
+                backgroundColor: '#25D366',
+                borderColor: '#25D366',
+                padding: '14px 34px',
+                color: '#ffffff',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
-              <FileSpreadsheet size={18} />
-              <span>Request Urgent Delivery</span>
-            </button>
+              <MessageCircle size={18} />
+              <span>Contact via WhatsApp</span>
+            </a>
 
             <Link href="/services/express-shipment" className="btn btn-outline-white" style={{ padding: '14px 28px' }}>
               <span>Express Logistics Info</span>
@@ -501,7 +564,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. The 4 Maritime Services (Clean White Section) */}
+      {/* 7. Maritime Services (Clean White Section - Shiphandling Removed) */}
       <section className="section section-white">
         <div className="container">
 
@@ -509,11 +572,11 @@ export default function HomePage() {
             <span className="sub-title">Technical Support</span>
             <h2 className="main-title">Our Maritime Services</h2>
             <p style={{ maxWidth: '650px', margin: '14px auto 0', color: '#64748b' }}>
-              Field-proven voyage engineering, husbandry agency, and diving services.
+              Field-proven voyage engineering, afloat hull maintenance, and AOG logistics.
             </p>
           </div>
 
-          <div className="grid-4">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
             {/* 1. Repair */}
             <div className="card-clean" style={{ padding: '28px', display: 'flex', flexDirection: 'column' }}>
               <div style={{
@@ -541,34 +604,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* 2. Shiphandling */}
-            <div className="card-clean" style={{ padding: '28px', display: 'flex', flexDirection: 'column' }}>
-              <div style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '8px',
-                backgroundColor: '#fefce8',
-                color: '#a16207',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '18px'
-              }}>
-                <Compass size={26} />
-              </div>
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0a2540', marginBottom: '8px' }}>
-                Shiphandling
-              </h4>
-              <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.6, flexGrow: 1, marginBottom: '20px' }}>
-                Comprehensive port agency, bunker coordination, crew changes, Cash to Master, and Off-Port Limits (OPL) launch boats.
-              </p>
-              <Link href="/services/shiphandling" className="btn btn-outline" style={{ width: '100%', fontSize: '0.82rem' }}>
-                <span>Read More</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            {/* 3. Hull cleaning */}
+            {/* 2. Hull cleaning */}
             <div className="card-clean" style={{ padding: '28px', display: 'flex', flexDirection: 'column' }}>
               <div style={{
                 width: '50px',
@@ -595,7 +631,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* 4. Express Shipment */}
+            {/* 3. Express Shipment */}
             <div className="card-clean" style={{ padding: '28px', display: 'flex', flexDirection: 'column' }}>
               <div style={{
                 width: '50px',
@@ -626,7 +662,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. RFQ Contact Strip */}
+      {/* 8. Assistance Strip */}
       <section style={{
         backgroundColor: '#0a2540',
         color: '#ffffff',
@@ -637,21 +673,31 @@ export default function HomePage() {
             Need Immediate Spare Parts or Technical Attendance?
           </h3>
           <p style={{ color: '#cbd5e1', fontSize: '0.95rem', maxWidth: '620px', margin: '0 auto 24px' }}>
-            Our marine superintendents provide quotation and availability within 60 minutes.
+            Our marine superintendents provide technical assistance and availability within 60 minutes.
           </p>
-          <button
-            onClick={() => openRFQ()}
-            className="btn btn-primary"
+          <a
+            href="https://wa.me/919819899051?text=Immediate%20spare%20parts%20inquiry"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-vessel-inquiry"
             style={{
-              backgroundColor: '#0284c7',
-              borderColor: '#0284c7',
-              padding: '14px 34px',
-              fontSize: '0.96rem'
+              backgroundColor: '#25D366',
+              borderColor: '#25D366',
+              padding: '11px 22px',
+              fontSize: '0.85rem',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              color: '#ffffff',
+              textDecoration: 'none'
             }}
           >
-            <FileSpreadsheet size={18} />
-            <span>Submit Vessel RFQ</span>
-          </button>
+            <MessageCircle size={16} />
+            <span>Inquire on WhatsApp (98198 99051)</span>
+          </a>
         </div>
       </section>
 

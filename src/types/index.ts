@@ -10,6 +10,8 @@ export type ProductCategory =
   | 'Navigation Equipment'
   | 'Automation Systems'
   | 'Electrical Equipment'
+  | 'Purifiers'
+  | 'Heat Exchangers'
   | 'Anchors'
   | 'Ropes'
   | 'Stores';

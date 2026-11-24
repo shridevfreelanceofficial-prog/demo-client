@@ -4,11 +4,13 @@ import { Product, ProductCategory } from '@/types';
 export const MARINE_CATEGORIES: ProductCategory[] = [
   'Engine Spare Parts',
   'Turbochargers',
-  'Compressors',
   'Pumps',
+  'Navigation Equipment',
+  'Purifiers',
+  'Heat Exchangers',
+  'Compressors',
   'Valves',
   'Motors',
-  'Navigation Equipment',
   'Automation Systems',
   'Electrical Equipment',
   'Anchors',
@@ -609,6 +611,103 @@ export const PRODUCTS: Product[] = [
     inStock: true,
     leadTime: 'Tons in Stock at Major Port Warehouses',
     certification: ['ISO 9001', 'DNV Verified'],
+    featured: true
+  },
+
+  // ==================== PURIFIERS (MARINE & AUXILIARY) ====================
+  {
+    id: 'purifier-alfalaval-s-type',
+    name: 'Alfa Laval S-Type Marine HFO / MDO Purifier Spares',
+    category: 'Purifiers',
+    sector: 'marine',
+    model: 'S-821 / S-826 / S-831 Separator Bowl & Parts',
+    partNumber: 'AL-S821-BOWL',
+    oemEquivalent: 'Alfa Laval Genuine & OEM Quality',
+    compatibleBrands: ['Alfa Laval', 'Westfalia', 'Mitsubishi Kakoki'],
+    description: 'High-speed disc stack centrifugal marine oil purifier bowl assemblies, vertical drive shafts, friction clutches, operating water slide rings, and complete major overhaul gasket kits for heavy fuel oil and lubricating oil treatment aboard merchant vessels.',
+    shortDescription: 'Complete bowl, spindle, and overhaul kit for Alfa Laval S-Type centrifugal separators.',
+    specifications: {
+      'Purifier Type': 'High-Speed Disc Centrifugal Separator',
+      'Suitable Medium': 'Heavy Fuel Oil (HFO up to 700 cSt), MDO, Lube Oil',
+      'Discharge Type': 'CentriShoot Low Sludge Loss Discharge',
+      'Bowl Speed': '8,400 - 9,500 RPM',
+      'Certification': 'Factory Balanced Grade ISO 1940'
+    },
+    image: '/images/deck_three-lobe-rotary-blower-tss-32-for-marine-sewage-1-4493-j.webp',
+    inStock: true,
+    leadTime: 'In Stock / Ready for Dispatch',
+    certification: ['ClassNK', 'DNV Approved', 'ISO 9001:2015'],
+    featured: true
+  },
+  {
+    id: 'purifier-westfalia-osd',
+    name: 'GEA Westfalia OSD / OSE Mineral Oil Separator Kit',
+    category: 'Purifiers',
+    sector: 'marine',
+    model: 'OSD 18 / OSD 35 / OSD 60',
+    partNumber: 'GEA-OSD-35-KIT',
+    oemEquivalent: 'GEA Westfalia OEM Standard',
+    compatibleBrands: ['Westfalia', 'Alfa Laval', 'Mitsubishi Kakoki'],
+    description: 'Genuine and replacement disc stacks, distribution cones, lock rings, feed pumps, and mechanical seal kits for GEA Westfalia marine centrifugal separators installed on main engine and auxiliary diesel generator lines.',
+    shortDescription: 'GEA Westfalia separator overhaul components and operating slide mechanisms.',
+    specifications: {
+      'Separation Type': 'Self-Cleaning Mineral Oil Clarifier / Purifier',
+      'Capacity': 'Up to 6,000 L/h fuel oil',
+      'Bowl Material': 'Duplex Stainless Steel (1.4462)',
+      'Drive': 'Flat belt drive with frequency converter control'
+    },
+    image: '/images/deck_spiroflex-diesel-engine-high-elasticity-coupling-isolator-rubber-parts-for-large-engineering-equipment-1-j.webp',
+    inStock: true,
+    leadTime: 'Immediate Dispatch',
+    certification: ['Lloyds Register', 'Bureau Veritas'],
+    featured: true
+  },
+
+  // ==================== HEAT EXCHANGERS (MARINE & AUXILIARY) ====================
+  {
+    id: 'heat-exchanger-alfalaval-plate',
+    name: 'Alfa Laval Marine Plate Heat Exchanger M10-BFM',
+    category: 'Heat Exchangers',
+    sector: 'marine',
+    model: 'M10-BFM / M15-BFM Titanium & SS Plates',
+    partNumber: 'AL-PHE-M10-TITAN',
+    oemEquivalent: 'Alfa Laval OEM Certified',
+    compatibleBrands: ['Alfa Laval', 'Sondex', 'APV', 'GEA Kelvion'],
+    description: 'Titanium grade 1 and AISI 316 stainless steel heat exchanger plates with Clip-on NBR/EPDM/FKM gaskets. Designed for main engine jacket water cooling, central coolers, and lube oil cooling systems under severe seawater corrosion conditions.',
+    shortDescription: 'Titanium and SS316 plate packs with clip-on gaskets for marine central coolers.',
+    specifications: {
+      'Plate Material': 'Titanium Grade 1 (0.5mm / 0.6mm) / AISI 316',
+      'Gasket System': 'Clip-on Glueless NBR / EPDM / FKM',
+      'Design Pressure': '10 Bar / 16 Bar Working Pressure',
+      'Application': 'Main Engine Central Cooling & Auxiliary Cooler'
+    },
+    image: '/images/deck_customizable-vulkanvulastik-marine-diesel-engine-generator-high-elasticity-rubber-damping-pad-coupling-1-j.webp',
+    inStock: true,
+    leadTime: 'Plates & Gaskets in Stock',
+    certification: ['DNV Certified', 'ClassNK', 'ABS Type Approved'],
+    featured: true
+  },
+  {
+    id: 'heat-exchanger-sondex-apv',
+    name: 'Sondex & APV Marine Plate Cooler Replacement Packs',
+    category: 'Heat Exchangers',
+    sector: 'marine',
+    model: 'S43 / S65 / J060 Plate & Gasket Sets',
+    partNumber: 'SDX-S43-NBR',
+    oemEquivalent: 'Sondex / Danfoss OEM Fit',
+    compatibleBrands: ['Sondex', 'APV', 'Alfa Laval', 'SWEP'],
+    description: 'Complete replacement plate and gasket cassettes for Sondex and APV marine freshwater generators, auxiliary diesel engine oil coolers, and dump condensers. Factory hydro-tested for zero cross-contamination.',
+    shortDescription: 'Replacement plate packs and elastomeric seals for marine coolers.',
+    specifications: {
+      'Corrugation': 'Herringbone pattern for high turbulence & anti-fouling',
+      'Gasket Profile': 'Sonder Lock mechanical lock without adhesive',
+      'Max Temp': '140°C Continuous Duty',
+      'Inspection': '100% Dye-Penetrant and Helium leak tested'
+    },
+    image: '/images/deck_customizable-arcusaflex-couplings-can-be-used-for-power-generation-ship-water-pumps-and-other-applications-1-j.webp',
+    inStock: true,
+    leadTime: 'Immediate Stock',
+    certification: ['ISO 9001:2015', 'IACS Compliance'],
     featured: true
   }
 ];

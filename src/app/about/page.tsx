@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useRFQ } from '@/components/LayoutWrapper';
 import { 
   Anchor, 
   ShieldCheck, 
@@ -12,7 +11,7 @@ import {
   Clock, 
   Users, 
   Wrench, 
-  FileSpreadsheet,
+  MessageCircle,
   ArrowRight,
   Ship,
   Compass,
@@ -23,7 +22,6 @@ import {
 import { COMPANY_INFO } from '@/data/company';
 
 export default function AboutPage() {
-  const { openRFQ } = useRFQ();
 
   return (
     <>
@@ -293,7 +291,7 @@ export default function AboutPage() {
         className="cta-banner"
         style={{
           position: 'relative',
-          padding: '75px 0',
+          padding: '85px 0',
           color: '#ffffff',
           textAlign: 'center',
           backgroundImage: `linear-gradient(rgba(10, 37, 64, 0.78), rgba(10, 37, 64, 0.85)), url('/gifs/video-from-rawpixel-id-18087970-gif.gif')`,
@@ -326,20 +324,26 @@ export default function AboutPage() {
             Submit your part numbers or engine specifications. Our duty technical superintendent will prepare a comprehensive quotation within 60 minutes.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button 
-              onClick={() => openRFQ()}
+            <a 
+              href="https://wa.me/919819899051?text=Inquiry%20regarding%20marine%20spares"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary"
               style={{ 
                 padding: '14px 34px', 
-                backgroundColor: '#0284c7', 
-                borderColor: '#0284c7', 
+                backgroundColor: '#25D366', 
+                borderColor: '#25D366', 
                 color: '#ffffff', 
-                fontWeight: 700 
+                fontWeight: 700,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
-              <FileSpreadsheet size={18} />
-              <span>Submit RFQ Now</span>
-            </button>
+              <MessageCircle size={18} />
+              <span>Inquire on WhatsApp</span>
+            </a>
             <Link 
               href="/contact" 
               className="btn" 

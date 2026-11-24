@@ -192,15 +192,6 @@ export default function Footer() {
                 </div>
               </li>
               <li>
-                <Link href="/services/shiphandling" style={{ color: '#ffffff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <ArrowRight size={14} color="#38bdf8" />
-                  <span>Shiphandling & Port Agency</span>
-                </Link>
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginLeft: '22px' }}>
-                  Bunkering coordination, crew changes, husbandry, OPA
-                </div>
-              </li>
-              <li>
                 <Link href="/services/hull-cleaning" style={{ color: '#ffffff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <ArrowRight size={14} color="#38bdf8" />
                   <span>Hull Cleaning & Diving</span>

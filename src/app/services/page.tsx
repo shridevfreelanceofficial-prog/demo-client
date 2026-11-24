@@ -3,28 +3,21 @@
 import React from 'react';
 import Link from 'next/link';
 import { SERVICES } from '@/data/services';
-import { useRFQ } from '@/components/LayoutWrapper';
 import { 
   Wrench, 
-  Compass, 
   Sparkles, 
   PlaneTakeoff, 
   ArrowRight, 
   CheckCircle2, 
   Clock, 
   ShieldCheck, 
-  FileSpreadsheet,
-  Anchor,
-  PhoneCall
+  MessageCircle,
+  FileSpreadsheet
 } from 'lucide-react';
-import { COMPANY_INFO } from '@/data/company';
 
 export default function ServicesPage() {
-  const { openRFQ } = useRFQ();
-
   const serviceIcons: Record<string, React.ReactNode> = {
     'repair': <Wrench size={28} />,
-    'shiphandling': <Compass size={28} />,
     'hull-cleaning': <Sparkles size={28} />,
     'express-shipment': <PlaneTakeoff size={28} />
   };
@@ -40,12 +33,12 @@ export default function ServicesPage() {
             <span style={{ color: '#0a2540', fontWeight: 700 }}>Maritime Services</span>
           </div>
           <div style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
-            24/7 Voyage Engineering & Port Agency Attendance
+            24/7 Voyage Engineering & Afloat Technical Attendance
           </div>
         </div>
       </div>
 
-      {/* 4 Core Services Grid */}
+      {/* Core Services Grid (Repair, Hull Cleaning, Express Shipment) */}
       <section style={{ padding: '40px 0 60px', backgroundColor: '#f8fafc' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 40px' }}>
@@ -136,20 +129,27 @@ export default function ServicesPage() {
                       <span>Explore Service</span>
                       <ArrowRight size={14} />
                     </Link>
-                    <button 
-                      onClick={() => openRFQ(srv.title)}
+                    <a 
+                      href={`https://wa.me/919819899051?text=${encodeURIComponent(`Inquiry regarding ${srv.title} service`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn"
                       style={{ 
                         padding: '10px 16px', 
                         fontSize: '0.88rem', 
-                        border: '1px solid #cbd5e1', 
-                        backgroundColor: '#ffffff', 
-                        color: '#0a2540',
-                        fontWeight: 600
+                        border: '1px solid #25D366', 
+                        backgroundColor: '#f0fdf4', 
+                        color: '#15803d',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px'
                       }}
                     >
-                      Inquire
-                    </button>
+                      <MessageCircle size={15} color="#25D366" />
+                      <span>WhatsApp</span>
+                    </a>
                   </div>
                 </div>
               </div>

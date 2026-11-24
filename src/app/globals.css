@@ -58,31 +58,13 @@ body {
   min-height: 100vh;
 }
 
-/* Sticked Ship GIF background for homepage */
+/* Ship hero background */
 .fixed-ship-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/gifs/ship.gif');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -10;
-  pointer-events: none;
+  display: none;
 }
 
 .fixed-ship-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(10, 37, 72, 0.45);
-  backdrop-filter: blur(2px);
-  z-index: -9;
-  pointer-events: none;
+  display: none;
 }
 
 /* Sticked GIF background for About Us */
@@ -166,38 +148,24 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-/* Ensure any heading inside dark sections or white-text containers is always pure white */
+/* Ensure any heading inside dark sections has proper white text */
+.section-dark,
 .section-dark h1,
 .section-dark h2,
 .section-dark h3,
 .section-dark h4,
 .section-dark h5,
 .section-dark h6,
-.section-dark p,
-.hero-header h1,
-.hero-header h2,
-.hero-header h3,
-.hero-header h4,
-.hero-header p,
-.cta-banner h1,
-.cta-banner h2,
-.cta-banner h3,
-.cta-banner h4,
-.cta-banner p,
-.text-white,
-[style*="color: #ffffff"] h1,
-[style*="color: #ffffff"] h2,
-[style*="color: #ffffff"] h3,
-[style*="color: #ffffff"] h4,
-[style*="color: #ffffff"] h5,
-[style*="color: #ffffff"] h6,
-[style*="color: rgb(255, 255, 255)"] h1,
-[style*="color: rgb(255, 255, 255)"] h2,
-[style*="color: rgb(255, 255, 255)"] h3,
-[style*="color: rgb(255, 255, 255)"] h4,
-[style*="color: rgb(255, 255, 255)"] h5,
-[style*="color: rgb(255, 255, 255)"] h6 {
+.section-dark p {
+  color: #ffffff;
+}
+
+.text-white {
   color: #ffffff !important;
+}
+
+.text-dark {
+  color: var(--primary-dark) !important;
 }
 
 p {
@@ -458,7 +426,7 @@ p {
   display: block;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: #0a2540;
   text-transform: uppercase;
   margin-bottom: 6px;
 }
@@ -469,7 +437,7 @@ p {
   border-radius: var(--radius-sm);
   border: 1px solid #cbd5e1;
   background-color: #ffffff;
-  color: var(--text-main);
+  color: #0a2540;
   font-size: 0.92rem;
   font-family: inherit;
   outline: none;
@@ -516,12 +484,13 @@ p {
   }
 }
 
-/* Floating Emergency Action */
+/* Floating Emergency Action - Bottom Left */
 .floating-hotline,
 .floating-desk-container {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 24px;
+  right: auto;
   z-index: 999;
 }
 
@@ -529,7 +498,8 @@ p {
   .floating-hotline,
   .floating-desk-container {
     bottom: 16px;
-    right: 16px;
+    left: 16px;
+    right: auto;
   }
 }
 
@@ -652,6 +622,24 @@ p {
   .hero-search-box button {
     width: 100% !important;
     padding: 12px !important;
+  }
+}
+
+/* Mobile Vessel Enquiry Button Adjustments */
+.btn-vessel-inquiry {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .btn-vessel-inquiry {
+    padding: 10px 16px !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.02em !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    gap: 6px !important;
   }
 }
 

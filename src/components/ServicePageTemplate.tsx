@@ -3,13 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { ServiceDetail } from '@/types';
-import { useRFQ } from '@/components/LayoutWrapper';
 import { 
   CheckCircle2, 
   ArrowRight, 
   ShieldCheck, 
   PhoneCall, 
-  FileSpreadsheet, 
+  MessageCircle, 
   ChevronRight,
   Clock,
   Award
@@ -21,8 +20,6 @@ interface ServicePageTemplateProps {
 }
 
 export default function ServicePageTemplate({ service }: ServicePageTemplateProps) {
-  const { openRFQ } = useRFQ();
-
   return (
     <>
       {/* 1. Hero Section with Simple Background Color and Beautifully Styled Service Name */}
@@ -196,14 +193,26 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
 
               {/* Action Buttons */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
-                <button
-                  onClick={() => openRFQ(service.title)}
+                <a
+                  href={`https://wa.me/919819899051?text=${encodeURIComponent(`Inquiry regarding ${service.title} service`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary"
-                  style={{ padding: '13px 28px', fontSize: '0.94rem' }}
+                  style={{
+                    padding: '13px 28px',
+                    fontSize: '0.94rem',
+                    backgroundColor: '#25D366',
+                    borderColor: '#25D366',
+                    color: '#ffffff',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    textDecoration: 'none'
+                  }}
                 >
-                  <FileSpreadsheet size={16} />
-                  <span>Request Service Quotation</span>
-                </button>
+                  <MessageCircle size={16} />
+                  <span>Inquire on WhatsApp</span>
+                </a>
 
                 <a
                   href={`tel:${COMPANY_INFO.emergencyHotline.replace(/[^0-9+]/g, '')}`}
@@ -254,7 +263,6 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {[
                 { slug: 'repair', name: 'Repair & Overhaul' },
-                { slug: 'shiphandling', name: 'Shiphandling & Port Agency' },
                 { slug: 'hull-cleaning', name: 'Hull Cleaning & Diving' },
                 { slug: 'express-shipment', name: 'Express Shipment' }
               ].filter(s => s.slug !== service.slug).map(s => (
