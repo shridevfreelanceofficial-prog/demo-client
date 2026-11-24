@@ -86,7 +86,7 @@ export default function AboutPage() {
                 border: '4px solid #ffffff'
               }}>
                 <img 
-                  src="/images/ship3.webp" 
+                  src="/images/ship4.jpg" 
                   alt="Crest & Caliper Spares Vessel Cargo & Deck Operations"
                   style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
                 />

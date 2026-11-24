@@ -242,7 +242,7 @@ export default function HomePage() {
 
             {/* Left: User Uploaded Ship Images */}
             <div style={{ position: 'relative' }}>
-              {/* Primary Image: Ship with products loaded (ship3.webp) */}
+              {/* Primary Image: Ship with products loaded (ship4.jpg) */}
               <div style={{
                 borderRadius: '12px',
                 overflow: 'hidden',
@@ -250,7 +250,7 @@ export default function HomePage() {
                 border: '4px solid #ffffff'
               }}>
                 <img
-                  src="/images/ship3.webp"
+                  src="/images/ship4.jpg"
                   alt="Vessel Loaded with Marine Spares"
                   style={{ width: '100%', height: '360px', objectFit: 'cover' }}
                 />
